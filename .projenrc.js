@@ -59,4 +59,10 @@ project.addDevDependencies({
   'jsii-docgen': Semver.pinned('1.4.0'),
 })
 
+project.addFields({
+  awscdkio: {
+    twitter: '@pahudnet',
+  }
+})
+
 project.synth();
