@@ -54,5 +54,9 @@ project.npmignore.exclude(
   'yarn-error.log',
 );
 
+// override the version to 1.4.0 tentatively 
+project.addDevDependencies({
+  'jsii-docgen': Semver.pinned('1.4.0'),
+})
 
 project.synth();
