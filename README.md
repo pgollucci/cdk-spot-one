@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/cdk-spot-one.svg)](https://badge.fury.io/py/cdk-spot-one)
 ![Release](https://github.com/pahud/cdk-spot-one/workflows/Release/badge.svg)
 
-# Welcome to `cdk-spot-one`
+# `cdk-spot-one`
 
 EC2 Spot Block with Single Instance and EIP
 
