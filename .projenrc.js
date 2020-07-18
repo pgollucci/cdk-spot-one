@@ -3,15 +3,15 @@ const {
   Semver
 } = require('projen');
 
-const AWS_CDK_LATEST_RELEASE = '1.45.0';
-const PROJECT_NAME = 'cdk-serverless-api';
-const PROJECT_DESCRIPTION = 'A sample JSII construct lib for AWS CDK';
+const AWS_CDK_LATEST_RELEASE = '1.52.0';
+const PROJECT_NAME = 'cdk-spot-one';
+const PROJECT_DESCRIPTION = 'EC2 Spot Block with Single Instance and EIP';
 
 const project = new JsiiProject({
   name: PROJECT_NAME,
   jsiiVersion: Semver.caret('1.5.0'),
   description: PROJECT_DESCRIPTION,
-  repository: 'https://github.com/pahud/awscdk-jsii-template.git',
+  repository: 'https://github.com/pahud/cdk-spot-one.git',
   authorName: 'Pahud Hsieh',
   authorEmail: 'hunhsieh@amazon.com',
   stability: 'experimental',
@@ -21,20 +21,22 @@ const project = new JsiiProject({
     '@types/node': Semver.caret('14.0.11'),
   },
   dependencies: {
-    constructs: Semver.pinned('3.0.3'),
+    constructs: Semver.pinned('3.0.4'),
     '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
-    '@aws-cdk/aws-apigatewayv2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
-    '@aws-cdk/aws-lambda': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/custom-resources': Semver.pinned(AWS_CDK_LATEST_RELEASE),
   },
   python: {
-    distName: 'cdk-serverless-api',
-    module: 'cdk_serverless_api'
+    distName: 'cdk-spot-one',
+    module: 'cdk_sopt_one'
   }
 });
 
 project.addFields({
   'keywords': [
     'cdk',
+    'spot',
     'aws',
   ]
 });
@@ -47,8 +49,9 @@ project.gitignore.exclude(
 
 project.npmignore.exclude(
   'cdk.context.json',
-  'cdk.out',  
+  'cdk.out',
   'coverage',
+  'yarn-error.log',
 );
 
 
