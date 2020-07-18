@@ -20,8 +20,15 @@ const project = new JsiiProject({
     '@types/jest': Semver.caret('25.2.3'),
     '@types/node': Semver.caret('14.0.11'),
   },
+  peerDependencies: {
+    'constructs': Semver.pinned('3.0.4'),
+    '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/custom-resources': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+  },
   dependencies: {
-    constructs: Semver.pinned('3.0.4'),
+    'constructs': Semver.pinned('3.0.4'),
     '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
