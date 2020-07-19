@@ -5,7 +5,7 @@ const {
 
 const AWS_CDK_LATEST_RELEASE = '1.52.0';
 const PROJECT_NAME = 'cdk-spot-one';
-const PROJECT_DESCRIPTION = 'EC2 Spot Block with Single Instance and EIP';
+const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No interruption.';
 
 const project = new JsiiProject({
   name: PROJECT_NAME,

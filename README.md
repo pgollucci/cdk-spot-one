@@ -5,7 +5,7 @@
 
 # cdk-spot-one
 
-EC2 Spot Block with Single Instance and EIP
+One spot instance with EIP and defined duration. No interruption.
 
 # Why
 
@@ -82,4 +82,4 @@ And simply run this to connect to the EC2 instance.
 $ ec2-connect.sh i-01f827ab9de7b93a9
 ```
 
-However, it's also possible to explicitly specify your existing SSH key with the `keyName` construct property if you like.
+It's also possible to explicitly specify your existing SSH key with the `keyName` construct property if you like.

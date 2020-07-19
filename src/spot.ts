@@ -1,5 +1,5 @@
 import * as ec2 from '@aws-cdk/aws-ec2';
-import { Construct, Resource, ResourceProps, PhysicalName, Stack, Fn, CfnOutput, Duration } from '@aws-cdk/core';
+import { Construct, Resource, ResourceProps, PhysicalName, Stack, Fn, CfnOutput, Duration, Lazy } from '@aws-cdk/core';
 import * as iam from '@aws-cdk/aws-iam';
 import * as cr from '@aws-cdk/custom-resources';
 
@@ -268,7 +268,7 @@ export class SpotFleet extends Resource {
         iamFleetRole: spotFleetRole.roleArn,
         targetCapacity: props.targetCapacity ?? 1,
         validFrom: props.validFrom,
-        validUntil: this.validUntil,
+        validUntil: Lazy.stringValue({ produce: () => this.validUntil }),
         terminateInstancesWithExpiration: props.terminateInstancesWithExpiration ?? true,
       },
     })
