@@ -157,8 +157,22 @@ export class SpotFleet extends Resource {
   readonly spotFleetId: string;
   readonly launchTemplate: ILaunchtemplate;
   readonly vpc: ec2.IVpc;
+  /**
+   * the first instance id in this fleet
+   */
+  readonly instanceId: string;
+  /**
+   * instance type of the first instance in this fleet
+   */
+  readonly instanceType: string;
+  /**
+   * SpotFleetRequestId for this spot fleet
+   */
+  readonly spotFleetRequestId: string;
+  /**
+   * The time when the the fleet allocation will expire
+   */
   private validUntil?: string;
-
 
   constructor(scope: Construct, id: string, props: SpotFleetProps = {}) {
     super(scope, id, props)
@@ -194,8 +208,6 @@ export class SpotFleet extends Resource {
     })
 
     sg.connections.allowFromAnyIpv4(ec2.Port.tcp(22))
-
-    // const config = this.launchTemplate.bind(this)
 
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
 
@@ -286,18 +298,21 @@ export class SpotFleet extends Resource {
       },
       policy: cr.AwsCustomResourcePolicy.fromSdkCalls({ resources: cr.AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
-    const instanceId = fleetInstances.getResponseField('ActiveInstances.0.InstanceId')
-    new CfnOutput(this, 'InstanceId', { value: instanceId })
+    this.instanceId = fleetInstances.getResponseField('ActiveInstances.0.InstanceId')
+    this.instanceType = fleetInstances.getResponseField('ActiveInstances.0.InstanceType')
+    this.spotFleetRequestId = fleetInstances.getResponseField('SpotFleetRequestId')
+
+    new CfnOutput(this, 'InstanceId', { value: this.instanceId })
 
     // EIP association
     if (props.eipAllocationId) {
       new ec2.CfnEIPAssociation(this, 'EipAssocation', {
         allocationId: props.eipAllocationId,
-        instanceId,
+        instanceId: this.instanceId,
       })
     } else {
       new ec2.CfnEIP(this, 'EIP', {
-        instanceId,
+        instanceId: this.instanceId,
       })
     }
   }

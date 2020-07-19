@@ -69,6 +69,7 @@ project.addDevDependencies({
 project.addFields({
   awscdkio: {
     twitter: '@pahudnet',
+    announce: false
   }
 })
 
