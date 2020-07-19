@@ -293,7 +293,7 @@ export class SpotFleet extends Resource {
       handler: 'index.on_event',
       runtime: lambda.Runtime.PYTHON_3_8,
       timeout: Duration.seconds(60),
-     });
+    });
 
     const isComplete = new lambda.Function(this, 'IsComplete', {
       code: lambda.Code.fromAsset(path.join(__dirname, './eip-handler')),
@@ -306,7 +306,7 @@ export class SpotFleet extends Resource {
     const myProvider = new cr.Provider(this, 'MyProvider', {
       onEventHandler: onEvent,
       isCompleteHandler: isComplete,        // optional async "waiter"
-      logRetention: logs.RetentionDays.ONE_DAY   // default is INFINITE
+      logRetention: logs.RetentionDays.ONE_DAY,   // default is INFINITE
     });
 
     onEvent.addToRolePolicy(new iam.PolicyStatement({
@@ -318,7 +318,7 @@ export class SpotFleet extends Resource {
       serviceToken: myProvider.serviceToken,
       properties: {
         SpotFleetRequestId: cfnSpotFleet.ref,
-      } 
+      }, 
     });
 
     fleetInstances.node.addDependency(cfnSpotFleet)
