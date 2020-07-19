@@ -3,11 +3,11 @@
 [![PyPI version](https://badge.fury.io/py/cdk-spot-one.svg)](https://badge.fury.io/py/cdk-spot-one)
 ![Release](https://github.com/pahud/cdk-spot-one/workflows/Release/badge.svg)
 
-# `cdk-spot-one`
+# cdk-spot-one
 
 EC2 Spot Block with Single Instance and EIP
 
-# Why you need it
+# Why
 
 Sometimes we need an Amazon EC2 instance with static fixed IP for testing or development purpose for a duration of
 time(probably hours). We need to make sure during this time, no interruption will occur and we don't want to pay
