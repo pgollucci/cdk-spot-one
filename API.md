@@ -82,7 +82,7 @@ __Extends__: [Resource](#aws-cdk-core-resource)
 
 
 ```ts
-new SpotFleet(scope: Construct, id: string, props: SpotFleetProps)
+new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
 ```
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
@@ -99,6 +99,7 @@ new SpotFleet(scope: Construct, id: string, props: SpotFleetProps)
   * **terminateInstancesWithExpiration** (<code>boolean</code>)  terminate the instance when the allocation is expired. __*Default*__: true
   * **validFrom** (<code>string</code>)  the time when the spot fleet allocation starts. __*Default*__: no expiration
   * **validUntil** (<code>string</code>)  the time when the spot fleet allocation expires. __*Default*__: no expiration
+  * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  VPC for the spot fleet. __*Default*__: new VPC will be created
   * **vpcSubnet** (<code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code>)  VPC subnet for the spot fleet. __*Default*__: public subnet
   * **eipAllocationId** (<code>string</code>)  Allocation ID for your existing Elastic IP Address. __*Optional*__
   * **launchTemplate** (<code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code>)  Launch template for the spot fleet. __*Optional*__
@@ -114,6 +115,7 @@ Name | Type | Description
 **instanceRole**🔹 | <code>[IRole](#aws-cdk-aws-iam-irole)</code> | <span></span>
 **launchTemplate**🔹 | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | <span></span>
 **spotFleetId**🔹 | <code>string</code> | <span></span>
+**vpc**🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
 **targetCapacity**?🔹 | <code>number</code> | __*Optional*__
 
 ### Methods
@@ -199,6 +201,7 @@ Name | Type | Description
 **terminateInstancesWithExpiration**?🔹 | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
 **validFrom**?🔹 | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
 **validUntil**?🔹 | <code>string</code> | the time when the spot fleet allocation expires.<br/>__*Default*__: no expiration
+**vpc**?🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the spot fleet.<br/>__*Default*__: new VPC will be created
 **vpcSubnet**?🔹 | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | VPC subnet for the spot fleet.<br/>__*Default*__: public subnet
 
 
@@ -263,6 +266,7 @@ Name | Type | Description
 **terminateInstancesWithExpiration**?🔹 | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
 **validFrom**?🔹 | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
 **validUntil**?🔹 | <code>string</code> | the time when the spot fleet allocation expires.<br/>__*Default*__: no expiration
+**vpc**?🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the spot fleet.<br/>__*Default*__: new VPC will be created
 **vpcSubnet**?🔹 | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | VPC subnet for the spot fleet.<br/>__*Default*__: public subnet
 
 
