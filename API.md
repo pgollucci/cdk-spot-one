@@ -112,9 +112,12 @@ new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
 Name | Type | Description 
 -----|------|-------------
 **defaultInstanceType**🔹 | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | <span></span>
+**instanceId**🔹 | <code>string</code> | the first instance id in this fleet.
 **instanceRole**🔹 | <code>[IRole](#aws-cdk-aws-iam-irole)</code> | <span></span>
+**instanceType**🔹 | <code>string</code> | instance type of the first instance in this fleet.
 **launchTemplate**🔹 | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | <span></span>
 **spotFleetId**🔹 | <code>string</code> | <span></span>
+**spotFleetRequestId**🔹 | <code>string</code> | SpotFleetRequestId for this spot fleet.
 **vpc**🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
 **targetCapacity**?🔹 | <code>number</code> | __*Optional*__
 
