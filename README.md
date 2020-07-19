@@ -31,6 +31,7 @@ const fleet = new SpotFleet(stack, 'SpotFleet')
 // configure the expiration after 1 hour
 fleet.expireAfter(Duration.hours(1))
 
+
 // create the 2nd fleet for 6 hours and associate with new EIP
 const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
   blockDuration: BlockDuration.SIX_HOURS,
@@ -39,6 +40,11 @@ const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
 })
 // configure the expiration after 6 hours
 fleet2.expireAfter(Duration.hours(6))
+
+// print the instanceId from each spot fleet
+new CfnOutput(stack, 'SpotFleetInstanceId', { value: fleet.instanceId })
+new CfnOutput(stack, 'SpotFleet2InstanceId', { value: fleet2.instanceId })
+
 ```
 # SSH connect
 
