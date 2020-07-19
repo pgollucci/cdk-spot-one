@@ -289,14 +289,14 @@ export class SpotFleet extends Resource {
     })
     new CfnOutput(this, 'SpotFleetId', { value: cfnSpotFleet.ref })
     const onEvent = new lambda.Function(this, 'OnEvent', { 
-      code: lambda.Code.fromAsset(path.join(__dirname, './eip-handler')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../eip-handler')),
       handler: 'index.on_event',
       runtime: lambda.Runtime.PYTHON_3_8,
       timeout: Duration.seconds(60),
     });
 
     const isComplete = new lambda.Function(this, 'IsComplete', {
-      code: lambda.Code.fromAsset(path.join(__dirname, './eip-handler')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../eip-handler')),
       handler: 'index.is_complete',
       runtime: lambda.Runtime.PYTHON_3_8,
       timeout: Duration.seconds(60),
