@@ -298,6 +298,8 @@ export class SpotFleet extends Resource {
       },
       policy: cr.AwsCustomResourcePolicy.fromSdkCalls({ resources: cr.AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
+
+    fleetInstances.node.addDependency(cfnSpotFleet)
     this.instanceId = fleetInstances.getResponseField('ActiveInstances.0.InstanceId')
     this.instanceType = fleetInstances.getResponseField('ActiveInstances.0.InstanceType')
     this.spotFleetRequestId = fleetInstances.getResponseField('SpotFleetRequestId')
