@@ -25,6 +25,8 @@ const project = new JsiiProject({
     '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-lambda': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-logs': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/custom-resources': Semver.pinned(AWS_CDK_LATEST_RELEASE),
   },
   dependencies: {
@@ -32,6 +34,8 @@ const project = new JsiiProject({
     '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-lambda': Semver.pinned(AWS_CDK_LATEST_RELEASE),
+    '@aws-cdk/aws-logs': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/custom-resources': Semver.pinned(AWS_CDK_LATEST_RELEASE),
   },
   python: {

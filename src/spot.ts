@@ -1,7 +1,10 @@
 import * as ec2 from '@aws-cdk/aws-ec2';
-import { Construct, Resource, ResourceProps, PhysicalName, Stack, Fn, CfnOutput, Duration, Lazy } from '@aws-cdk/core';
+import { Construct, Resource, ResourceProps, PhysicalName, Stack, Fn, CfnOutput, Duration, Lazy, CustomResource, Token } from '@aws-cdk/core';
 import * as iam from '@aws-cdk/aws-iam';
+import * as lambda from '@aws-cdk/aws-lambda';
+import * as logs from '@aws-cdk/aws-logs';
 import * as cr from '@aws-cdk/custom-resources';
+import * as path from 'path';
 
 const DEFAULT_INSTANCE_TYPE = 't3.large'
 
@@ -285,24 +288,44 @@ export class SpotFleet extends Resource {
       },
     })
     new CfnOutput(this, 'SpotFleetId', { value: cfnSpotFleet.ref })
+    const onEvent = new lambda.Function(this, 'OnEvent', { 
+      code: lambda.Code.fromAsset(path.join(__dirname, './eip-handler')),
+      handler: 'index.on_event',
+      runtime: lambda.Runtime.PYTHON_3_8,
+      timeout: Duration.seconds(60),
+     });
 
-    const fleetInstances = new cr.AwsCustomResource(this, 'DescribeSpotFleetInstances', {
-      onUpdate: {
-        service: 'EC2',
-        action: 'describeSpotFleetInstances',
-        parameters: {
-          SpotFleetRequestId: cfnSpotFleet.ref,
-        },
-        // Update physical id to always fetch the latest version
-        physicalResourceId: cr.PhysicalResourceId.of(cfnSpotFleet.ref),
-      },
-      policy: cr.AwsCustomResourcePolicy.fromSdkCalls({ resources: cr.AwsCustomResourcePolicy.ANY_RESOURCE }),
+    const isComplete = new lambda.Function(this, 'IsComplete', {
+      code: lambda.Code.fromAsset(path.join(__dirname, './eip-handler')),
+      handler: 'index.is_complete',
+      runtime: lambda.Runtime.PYTHON_3_8,
+      timeout: Duration.seconds(60),
+      role: onEvent.role,
+    });
+
+    const myProvider = new cr.Provider(this, 'MyProvider', {
+      onEventHandler: onEvent,
+      isCompleteHandler: isComplete,        // optional async "waiter"
+      logRetention: logs.RetentionDays.ONE_DAY   // default is INFINITE
+    });
+
+    onEvent.addToRolePolicy(new iam.PolicyStatement({
+      actions: [ 'ec2:DescribeSpotFleetInstances' ],
+      resources: [ '*' ],
+    }))
+
+    const fleetInstances = new CustomResource(this, 'SpotFleetInstances', { 
+      serviceToken: myProvider.serviceToken,
+      properties: {
+        SpotFleetRequestId: cfnSpotFleet.ref,
+      } 
     });
 
     fleetInstances.node.addDependency(cfnSpotFleet)
-    this.instanceId = fleetInstances.getResponseField('ActiveInstances.0.InstanceId')
-    this.instanceType = fleetInstances.getResponseField('ActiveInstances.0.InstanceType')
-    this.spotFleetRequestId = fleetInstances.getResponseField('SpotFleetRequestId')
+
+    this.instanceId = Token.asString(fleetInstances.getAtt('InstanceId'))
+    this.instanceType = Token.asString(fleetInstances.getAtt('InstanceType'))
+    this.spotFleetRequestId = Token.asString(fleetInstances.getAtt('SpotInstanceRequestId'))
 
     new CfnOutput(this, 'InstanceId', { value: this.instanceId })
 

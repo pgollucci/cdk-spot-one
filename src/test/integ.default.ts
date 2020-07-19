@@ -1,6 +1,6 @@
 import { SpotFleet } from '../index';
 import { App, Stack, Duration, CfnOutput } from '@aws-cdk/core';
-import { BlockDuration, VpcProvider } from '../spot';
+import { VpcProvider } from '../spot';
 
 const app = new App();
 
@@ -9,7 +9,7 @@ const env = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
 };
 
-const stack = new Stack(app, 'SpotFleetStack', { env });
+const stack = new Stack(app, 'SpotFleetStack5', { env });
 
 const vpc = VpcProvider.getOrCreate(stack);
 
@@ -20,19 +20,19 @@ const fleet = new SpotFleet(stack, 'SpotFleet', { vpc })
 fleet.expireAfter(Duration.hours(1))
 
 new CfnOutput(stack, 'InstanceId', { value: fleet.instanceId })
-new CfnOutput(stack, 'InstanceType', { value: fleet.instanceType })
+// new CfnOutput(stack, 'InstanceType', { value: fleet.instanceType })
 
-// create the 2nd fleet for 6 hours and associate with new EIP
-const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
-  blockDuration: BlockDuration.SIX_HOURS,
-  eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
-  vpc: fleet.vpc,
-})
-// configure the expiration after 6 hours
-fleet2.expireAfter(Duration.hours(6))
+// // create the 2nd fleet for 6 hours and associate with new EIP
+// const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
+//   blockDuration: BlockDuration.SIX_HOURS,
+//   eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
+//   vpc: fleet.vpc,
+// })
+// // configure the expiration after 6 hours
+// fleet2.expireAfter(Duration.hours(6))
 
-new CfnOutput(stack, 'Instance2Id', { value: fleet2.instanceId })
-new CfnOutput(stack, 'Instance2Type', { value: fleet2.instanceType })
+// new CfnOutput(stack, 'Instance2Id', { value: fleet2.instanceId })
+// new CfnOutput(stack, 'Instance2Type', { value: fleet2.instanceType })
 
 
 
