@@ -40,3 +40,46 @@ const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
 // configure the expiration after 6 hours
 fleet2.expireAfter(Duration.hours(6))
 ```
+# SSH connect
+
+By default the `cdk-spot-one` does not assign any SSH public key for you on the instance. You are encouraged to use `ec2-instance-connect` to send your public key from local followed by one-time SSH connect.
+
+For example:
+
+```sh
+pubkey="$HOME/.ssh/aws_2020_id_rsa.pub"
+echo "sending public key to ${instanceId}"
+aws ec2-instance-connect send-ssh-public-key --instance-id ${instanceId} --instance-os-user ec2-user \
+--ssh-public-key file://${pubkey} --availability-zone ${az} 
+```
+
+You may also create a simple `ec2-connect.sh` script like this and save in your $PATH:
+
+```sh
+#!/bin/bash
+
+instanceId=$1
+pubkey="$HOME/.ssh/aws_2020_id_rsa.pub"
+sshUser='ec2-user'
+
+az=$(aws ec2 describe-instances --instance-id ${instanceId} --query 'Reservations[0].Instances[0].Placement.AvailabilityZone' --output text)
+publicIp=$(aws ec2 describe-instances --instance-id ${instanceId} --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+
+
+echo "sending public key to ${instanceId}"
+aws ec2-instance-connect send-ssh-public-key --instance-id ${instanceId} --instance-os-user ${sshUser} \
+--ssh-public-key file://${pubkey} --availability-zone ${az} > /dev/null
+
+if [[ $2 != '--send-key-only' ]]; then
+  echo "connecting to ${publicIp} at ${az}"
+	ssh ${sshUser}@${publicIp}
+fi
+```
+
+And simply run this to connect to the EC2 instance.
+
+```sh
+$ ec2-connect.sh i-01f827ab9de7b93a9
+```
+
+However, it's also possible to explicitly specify your existing SSH key with the `keyName` construct property if you like.
