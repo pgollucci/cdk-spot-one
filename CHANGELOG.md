@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/pahud/cdk-spot-one/compare/v0.4.2...v0.4.3) (2020-07-20)
+
+
+### Bug Fixes
+
+* **handler:** failed to destroy stack ([77efe07](https://github.com/pahud/cdk-spot-one/commit/77efe0737229f2817f98514aeaff509c0c8a3bb6))
+
 ### [0.4.2](https://github.com/pahud/cdk-spot-one/compare/v0.4.1...v0.4.2) (2020-07-19)
 
 ### [0.4.1](https://github.com/pahud/cdk-spot-one/compare/v0.4.0...v0.4.1) (2020-07-19)
