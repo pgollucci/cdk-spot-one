@@ -32,10 +32,6 @@ def on_create(event):
 
 def on_update(event):
   return on_create(event)
-  # physical_id = event["PhysicalResourceId"]
-  # props = event["ResourceProperties"]
-  # print("update resource %s with props %s" % (physical_id, props))
-  # # ...
 
 def on_delete(event):
   return
@@ -44,6 +40,8 @@ def is_complete(event, context):
   physical_id = event["PhysicalResourceId"]
   request_type = event["RequestType"]
   props = event["ResourceProperties"]
+  # already returns true on delete
+  if request_type == 'Delete': return { 'IsComplete': True }
   spot_fleet_request_id = props['SpotFleetRequestId']
   result = ec2.describe_spot_fleet_instances(SpotFleetRequestId=spot_fleet_request_id)
   is_ready = 'ActiveInstances' in result and len(result['ActiveInstances']) > 0
