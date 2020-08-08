@@ -28,6 +28,33 @@ export enum BlockDuration {
   SIX_HOURS = 360
 }
 
+/**
+ * Whether the worker nodes should support GPU or just standard instances
+ */
+export enum NodeType {
+  /**
+   * Standard instances
+   */
+  STANDARD = 'Standard',
+
+  /**
+   * GPU instances
+   */
+  GPU = 'GPU',
+
+  /**
+   * Inferentia instances
+   */
+  INFERENTIA = 'INFERENTIA',
+
+  /**
+   * ARM instances
+   */
+  ARM = 'ARM',
+
+
+}
+
 export enum InstanceInterruptionBehavior {
   HIBERNATE = 'hibernate',
   STOP = 'stop',
@@ -214,7 +241,11 @@ export class SpotFleet extends Resource {
 
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
 
-    const imageId = props.customAmiId ?? ec2.MachineImage.latestAmazonLinux({ generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2 }).getImage(this).imageId
+    const imageId = props.customAmiId ?? 
+      ec2.MachineImage.latestAmazonLinux({ 
+        generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
+        cpuType: nodeTypeForInstanceType(this.defaultInstanceType) === NodeType.ARM ? ec2.AmazonLinuxCpuType.ARM_64 : undefined,
+      }).getImage(this).imageId
 
 
     const userData = ec2.UserData.forLinux();
@@ -346,4 +377,18 @@ export class SpotFleet extends Resource {
     date.setSeconds(date.getSeconds() + duration.toSeconds());
     this.validUntil = date.toISOString();
   }
+}
+
+
+const GRAVITON_INSTANCETYPES = ['a1'];
+const GRAVITON2_INSTANCETYPES = ['c6g', 'm6g', 'r6g'];
+const GPU_INSTANCETYPES = ['p2', 'p3', 'g4'];
+const INFERENTIA_INSTANCETYPES = ['inf1'];
+
+function nodeTypeForInstanceType(instanceType: ec2.InstanceType) {
+  return GPU_INSTANCETYPES.includes(instanceType.toString().substring(0, 2)) ? NodeType.GPU :
+    INFERENTIA_INSTANCETYPES.includes(instanceType.toString().substring(0, 4)) ? NodeType.INFERENTIA :
+      GRAVITON2_INSTANCETYPES.includes(instanceType.toString().substring(0, 3)) ? NodeType.ARM :
+        GRAVITON_INSTANCETYPES.includes(instanceType.toString().substring(0, 2)) ? NodeType.ARM :
+          NodeType.STANDARD;
 }

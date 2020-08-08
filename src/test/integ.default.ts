@@ -1,6 +1,7 @@
 import { SpotFleet } from '../index';
 import { App, Stack, Duration } from '@aws-cdk/core';
 import { VpcProvider, BlockDuration } from '../spot';
+import { InstanceType } from '@aws-cdk/aws-ec2';
 
 const app = new App();
 
@@ -19,10 +20,11 @@ const fleet = new SpotFleet(stack, 'SpotFleet', { vpc })
 // configure the expiration after 1 hour
 fleet.expireAfter(Duration.hours(1))
 
-// create the 2nd fleet for 6 hours and associate with new EIP
+// create the 2nd fleet with single Gravition 2 instance for 6 hours and associate with new EIP
 const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
   blockDuration: BlockDuration.SIX_HOURS,
   eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
+  defaultInstanceType: new InstanceType('c6g.large'),
   vpc: fleet.vpc,
 })
 

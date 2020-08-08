@@ -31,6 +31,7 @@ Name|Description
 ----|-----------
 [BlockDuration](#cdk-spot-one-blockduration)|*No description*
 [InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)|*No description*
+[NodeType](#cdk-spot-one-nodetype)|Whether the worker nodes should support GPU or just standard instances.
 
 
 
@@ -155,7 +156,7 @@ Creates a new stack.
 new VpcProvider(scope?: Construct, id?: string, props?: StackProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  Parent of this stack, usually a Program instance.
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  Parent of this stack, usually an `App` or a `Stage`, but could be any construct.
 * **id** (<code>string</code>)  The construct ID of this stack.
 * **props** (<code>[StackProps](#aws-cdk-core-stackprops)</code>)  Stack properties.
   * **description** (<code>string</code>)  A description of the stack. __*Default*__: No description.
@@ -297,5 +298,17 @@ Name | Description
 **HIBERNATE** 🔹|
 **STOP** 🔹|
 **TERMINATE** 🔹|
+
+
+## enum NodeType 🔹 <a id="cdk-spot-one-nodetype"></a>
+
+Whether the worker nodes should support GPU or just standard instances.
+
+Name | Description
+-----|-----
+**STANDARD** 🔹|Standard instances.
+**GPU** 🔹|GPU instances.
+**INFERENTIA** 🔹|Inferentia instances.
+**ARM** 🔹|ARM instances.
 
 

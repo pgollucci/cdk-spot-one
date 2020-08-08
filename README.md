@@ -32,10 +32,11 @@ const fleet = new SpotFleet(stack, 'SpotFleet')
 fleet.expireAfter(Duration.hours(1))
 
 
-// create the 2nd fleet for 6 hours and associate with new EIP
+// create the 2nd fleet with single Gravition 2 instance for 6 hours and associate with new EIP
 const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
   blockDuration: BlockDuration.SIX_HOURS,
   eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
+  defaultInstanceType: new InstanceType('c6g.large'),
   vpc: fleet.vpc,
 })
 // configure the expiration after 6 hours
@@ -46,6 +47,12 @@ new CfnOutput(stack, 'SpotFleetInstanceId', { value: fleet.instanceId })
 new CfnOutput(stack, 'SpotFleet2InstanceId', { value: fleet2.instanceId })
 
 ```
+
+# ARM64 instance types support
+
+
+
+
 # SSH connect
 
 By default the `cdk-spot-one` does not assign any SSH public key for you on the instance. You are encouraged to use `ec2-instance-connect` to send your public key from local followed by one-time SSH connect.
