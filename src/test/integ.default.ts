@@ -20,7 +20,7 @@ const fleet = new SpotFleet(stack, 'SpotFleet', { vpc })
 // configure the expiration after 1 hour
 fleet.expireAfter(Duration.hours(1))
 
-// create the 2nd fleet with single Gravition 2 instance for 6 hours and associate with new EIP
+// create the 2nd fleet with single Gravition 2 instance for 6 hours and associate with EIP
 const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
   blockDuration: BlockDuration.SIX_HOURS,
   eipAllocationId: 'eipalloc-0d1bc6d85895a5410',

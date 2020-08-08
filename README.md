@@ -48,9 +48,14 @@ new CfnOutput(stack, 'SpotFleet2InstanceId', { value: fleet2.instanceId })
 
 ```
 
-# ARM64 instance types support
+# ARM64 and Graviton 2 support
+
+`cdk-spot-one` selects the latest Amazon Linux 2 AMI for your `ARM64` instances. Simply select the instance types with the `defaultInstanceType` property and the `SpotFleet` will auto configure correct AMI for the instance.
 
 
+```ts
+defaultInstanceType: new InstanceType('c6g.large')
+```
 
 
 # SSH connect
