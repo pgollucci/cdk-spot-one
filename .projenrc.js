@@ -19,6 +19,7 @@ const project = new JsiiProject({
     '@aws-cdk/assert': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@types/jest': Semver.caret('25.2.3'),
     '@types/node': Semver.caret('14.0.11'),
+    'dot-prop': Semver.caret('5.1.1'),
   },
   peerDependencies: {
     'constructs': Semver.pinned('3.0.4'),
