@@ -41,7 +41,7 @@ const project = new JsiiProject({
   },
   python: {
     distName: 'cdk-spot-one',
-    module: 'cdk_sopt_one'
+    module: 'cdk_spot_one'
   }
 });
 
