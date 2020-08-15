@@ -3,7 +3,8 @@ const {
   Semver
 } = require('projen');
 
-const AWS_CDK_LATEST_RELEASE = '1.58.0';
+const AWS_CDK_LATEST_RELEASE = '1.59.0';
+const CONSTRUCTS_VERSION = '3.0.4';
 const PROJECT_NAME = 'cdk-spot-one';
 const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No interruption.';
 
@@ -13,7 +14,7 @@ const project = new JsiiProject({
   description: PROJECT_DESCRIPTION,
   repository: 'https://github.com/pahud/cdk-spot-one.git',
   authorName: 'Pahud Hsieh',
-  authorEmail: 'hunhsieh@amazon.com',
+  authorEmail: 'pahudnet@gmail.com',
   stability: 'experimental',
   devDependencies: {
     '@aws-cdk/assert': Semver.pinned(AWS_CDK_LATEST_RELEASE),
@@ -22,7 +23,7 @@ const project = new JsiiProject({
     'dot-prop': Semver.caret('5.1.1'),
   },
   peerDependencies: {
-    'constructs': Semver.pinned('3.0.4'),
+    'constructs': Semver.pinned(CONSTRUCTS_VERSION),
     '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
@@ -31,7 +32,7 @@ const project = new JsiiProject({
     '@aws-cdk/custom-resources': Semver.pinned(AWS_CDK_LATEST_RELEASE),
   },
   dependencies: {
-    'constructs': Semver.pinned('3.0.4'),
+    'constructs': Semver.pinned(CONSTRUCTS_VERSION),
     '@aws-cdk/core': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-iam': Semver.pinned(AWS_CDK_LATEST_RELEASE),
     '@aws-cdk/aws-ec2': Semver.pinned(AWS_CDK_LATEST_RELEASE),
@@ -55,7 +56,7 @@ project.addFields({
 
 project.gitignore.exclude(
   'cdk.context.json',
-  'cdk.out',
+  'cdk.out'
 );
 
 
