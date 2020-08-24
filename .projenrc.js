@@ -3,7 +3,7 @@ const {
   Semver
 } = require('projen');
 
-const AWS_CDK_LATEST_RELEASE = '1.59.0';
+const AWS_CDK_LATEST_RELEASE = '1.60.0';
 const CONSTRUCTS_VERSION = '3.0.4';
 const PROJECT_NAME = 'cdk-spot-one';
 const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No interruption.';

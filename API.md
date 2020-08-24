@@ -89,7 +89,9 @@ new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[SpotFleetProps](#cdk-spot-one-spotfleetprops)</code>)  *No description*
+  * **account** (<code>string</code>)  The AWS account ID this resource belongs to. __*Default*__: the resource is in the same account as the stack it belongs to
   * **physicalName** (<code>string</code>)  The value passed in by users to the physical name prop of the resource. __*Default*__: The physical name will be allocated by CloudFormation at deployment time
+  * **region** (<code>string</code>)  The AWS region this resource belongs to. __*Default*__: the resource is in the same region as the stack it belongs to
   * **blockDuration** (<code>[BlockDuration](#cdk-spot-one-blockduration)</code>)  reservce the spot instance as spot block with defined duration. __*Default*__: BlockDuration.ONE_HOUR
   * **customAmiId** (<code>string</code>)  custom AMI ID. __*Default*__: The latest Amaozn Linux 2 AMI ID
   * **defaultInstanceType** (<code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code>)  default EC2 instance type. __*Default*__: t3.large
@@ -194,6 +196,7 @@ __Returns__:
 
 Name | Type | Description 
 -----|------|-------------
+**account**?🔹 | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
 **blockDuration**?🔹 | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
 **customAmiId**?🔹 | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
 **defaultInstanceType**?🔹 | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
@@ -201,6 +204,7 @@ Name | Type | Description
 **instanceRole**?🔹 | <code>[Role](#aws-cdk-aws-iam-role)</code> | IAM role for the spot instance.<br/>__*Optional*__
 **keyName**?🔹 | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
 **physicalName**?🔹 | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
+**region**?🔹 | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
 **targetCapacity**?🔹 | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
 **terminateInstancesWithExpiration**?🔹 | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
 **validFrom**?🔹 | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
@@ -257,6 +261,7 @@ Name | Type | Description
 
 Name | Type | Description 
 -----|------|-------------
+**account**?🔹 | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
 **blockDuration**?🔹 | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
 **customAmiId**?🔹 | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
 **defaultInstanceType**?🔹 | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
@@ -266,6 +271,7 @@ Name | Type | Description
 **keyName**?🔹 | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
 **launchTemplate**?🔹 | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | Launch template for the spot fleet.<br/>__*Optional*__
 **physicalName**?🔹 | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
+**region**?🔹 | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
 **targetCapacity**?🔹 | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
 **terminateInstancesWithExpiration**?🔹 | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
 **validFrom**?🔹 | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
