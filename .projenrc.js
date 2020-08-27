@@ -16,7 +16,7 @@ const project = new ConstructLibraryAws({
 
   catalog: {
     twitter: 'pahudnet',
-    announce: 'false'
+    announce: false,
   },
 
   // creates PRs for projen upgrades
