@@ -36,11 +36,12 @@ const project = new ConstructLibraryAws({
   // },
 
   // jsii publishing
-  java: {
-    javaPackage: 'com.github.pahud.cdk-spot-one',
-    mavenGroupId: 'com.github.pahud',
-    mavenArtifactId: 'cdk-spot-one'
-  },
+  // java: {
+  //   javaPackage: 'com.github.pahud.cdk-spot-one',
+  //   mavenGroupId: 'com.github.pahud',
+  //   mavenArtifactId: 'cdk-spot-one'
+  // },
+
   python: {
     distName: 'cdk-spot-one',
     module: 'cdk_spot_one'

@@ -105,13 +105,6 @@
   "jsii": {
     "outdir": "dist",
     "targets": {
-      "java": {
-        "package": "com.github.pahud.cdk-spot-one",
-        "maven": {
-          "groupId": "com.github.pahud",
-          "artifactId": "cdk-spot-one"
-        }
-      },
       "python": {
         "distName": "cdk-spot-one",
         "module": "cdk_spot_one"
