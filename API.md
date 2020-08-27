@@ -35,7 +35,7 @@ Name|Description
 
 
 
-## class LaunchTemplate 🔹 <a id="cdk-spot-one-launchtemplate"></a>
+## class LaunchTemplate  <a id="cdk-spot-one-launchtemplate"></a>
 
 
 
@@ -55,7 +55,7 @@ new LaunchTemplate()
 ### Methods
 
 
-#### bind(spotfleet)🔹 <a id="cdk-spot-one-launchtemplate-bind"></a>
+#### bind(spotfleet) <a id="cdk-spot-one-launchtemplate-bind"></a>
 
 
 
@@ -70,7 +70,7 @@ __Returns__:
 
 
 
-## class SpotFleet 🔹 <a id="cdk-spot-one-spotfleet"></a>
+## class SpotFleet  <a id="cdk-spot-one-spotfleet"></a>
 
 
 
@@ -114,20 +114,20 @@ new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
 
 Name | Type | Description 
 -----|------|-------------
-**defaultInstanceType**🔹 | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | <span></span>
-**instanceId**🔹 | <code>string</code> | the first instance id in this fleet.
-**instanceRole**🔹 | <code>[IRole](#aws-cdk-aws-iam-irole)</code> | <span></span>
-**instanceType**🔹 | <code>string</code> | instance type of the first instance in this fleet.
-**launchTemplate**🔹 | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | <span></span>
-**spotFleetId**🔹 | <code>string</code> | <span></span>
-**spotFleetRequestId**🔹 | <code>string</code> | SpotFleetRequestId for this spot fleet.
-**vpc**🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
-**targetCapacity**?🔹 | <code>number</code> | __*Optional*__
+**defaultInstanceType** | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | <span></span>
+**instanceId** | <code>string</code> | the first instance id in this fleet.
+**instanceRole** | <code>[IRole](#aws-cdk-aws-iam-irole)</code> | <span></span>
+**instanceType** | <code>string</code> | instance type of the first instance in this fleet.
+**launchTemplate** | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | <span></span>
+**spotFleetId** | <code>string</code> | <span></span>
+**spotFleetRequestId** | <code>string</code> | SpotFleetRequestId for this spot fleet.
+**vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
+**targetCapacity**? | <code>number</code> | __*Optional*__
 
 ### Methods
 
 
-#### expireAfter(duration)🔹 <a id="cdk-spot-one-spotfleet-expireafter"></a>
+#### expireAfter(duration) <a id="cdk-spot-one-spotfleet-expireafter"></a>
 
 
 
@@ -142,7 +142,7 @@ expireAfter(duration: Duration): void
 
 
 
-## class VpcProvider 🔹 <a id="cdk-spot-one-vpcprovider"></a>
+## class VpcProvider  <a id="cdk-spot-one-vpcprovider"></a>
 
 
 
@@ -172,7 +172,7 @@ new VpcProvider(scope?: Construct, id?: string, props?: StackProps)
 ### Methods
 
 
-#### *static* getOrCreate(scope)🔹 <a id="cdk-spot-one-vpcprovider-getorcreate"></a>
+#### *static* getOrCreate(scope) <a id="cdk-spot-one-vpcprovider-getorcreate"></a>
 
 
 
@@ -187,7 +187,7 @@ __Returns__:
 
 
 
-## struct BaseSpotFleetProps 🔹 <a id="cdk-spot-one-basespotfleetprops"></a>
+## struct BaseSpotFleetProps  <a id="cdk-spot-one-basespotfleetprops"></a>
 
 
 
@@ -196,25 +196,25 @@ __Returns__:
 
 Name | Type | Description 
 -----|------|-------------
-**account**?🔹 | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
-**blockDuration**?🔹 | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
-**customAmiId**?🔹 | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
-**defaultInstanceType**?🔹 | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
-**instanceInterruptionBehavior**?🔹 | <code>[InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)</code> | The behavior when a Spot Instance is interrupted.<br/>__*Default*__: InstanceInterruptionBehavior.TERMINATE
-**instanceRole**?🔹 | <code>[Role](#aws-cdk-aws-iam-role)</code> | IAM role for the spot instance.<br/>__*Optional*__
-**keyName**?🔹 | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
-**physicalName**?🔹 | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
-**region**?🔹 | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
-**targetCapacity**?🔹 | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
-**terminateInstancesWithExpiration**?🔹 | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
-**validFrom**?🔹 | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
-**validUntil**?🔹 | <code>string</code> | the time when the spot fleet allocation expires.<br/>__*Default*__: no expiration
-**vpc**?🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the spot fleet.<br/>__*Default*__: new VPC will be created
-**vpcSubnet**?🔹 | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | VPC subnet for the spot fleet.<br/>__*Default*__: public subnet
+**account**? | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
+**blockDuration**? | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
+**customAmiId**? | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
+**defaultInstanceType**? | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
+**instanceInterruptionBehavior**? | <code>[InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)</code> | The behavior when a Spot Instance is interrupted.<br/>__*Default*__: InstanceInterruptionBehavior.TERMINATE
+**instanceRole**? | <code>[Role](#aws-cdk-aws-iam-role)</code> | IAM role for the spot instance.<br/>__*Optional*__
+**keyName**? | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
+**physicalName**? | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
+**region**? | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
+**targetCapacity**? | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
+**terminateInstancesWithExpiration**? | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
+**validFrom**? | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
+**validUntil**? | <code>string</code> | the time when the spot fleet allocation expires.<br/>__*Default*__: no expiration
+**vpc**? | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the spot fleet.<br/>__*Default*__: new VPC will be created
+**vpcSubnet**? | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | VPC subnet for the spot fleet.<br/>__*Default*__: public subnet
 
 
 
-## interface ILaunchtemplate 🔹 <a id="cdk-spot-one-ilaunchtemplate"></a>
+## interface ILaunchtemplate  <a id="cdk-spot-one-ilaunchtemplate"></a>
 
 __Implemented by__: [LaunchTemplate](#cdk-spot-one-launchtemplate)
 
@@ -222,7 +222,7 @@ __Implemented by__: [LaunchTemplate](#cdk-spot-one-launchtemplate)
 ### Methods
 
 
-#### bind(spotfleet)🔹 <a id="cdk-spot-one-ilaunchtemplate-bind"></a>
+#### bind(spotfleet) <a id="cdk-spot-one-ilaunchtemplate-bind"></a>
 
 
 
@@ -237,7 +237,7 @@ __Returns__:
 
 
 
-## struct SpotFleetLaunchTemplateConfig 🔹 <a id="cdk-spot-one-spotfleetlaunchtemplateconfig"></a>
+## struct SpotFleetLaunchTemplateConfig  <a id="cdk-spot-one-spotfleetlaunchtemplateconfig"></a>
 
 __Obtainable from__: [LaunchTemplate](#cdk-spot-one-launchtemplate).[bind](#cdk-spot-one-launchtemplate#cdk-spot-one-launchtemplate-bind)()
 
@@ -247,12 +247,12 @@ __Obtainable from__: [LaunchTemplate](#cdk-spot-one-launchtemplate).[bind](#cdk-
 
 Name | Type | Description 
 -----|------|-------------
-**launchTemplate**🔹 | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | <span></span>
-**spotfleet**🔹 | <code>[SpotFleet](#cdk-spot-one-spotfleet)</code> | <span></span>
+**launchTemplate** | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | <span></span>
+**spotfleet** | <code>[SpotFleet](#cdk-spot-one-spotfleet)</code> | <span></span>
 
 
 
-## struct SpotFleetProps 🔹 <a id="cdk-spot-one-spotfleetprops"></a>
+## struct SpotFleetProps  <a id="cdk-spot-one-spotfleetprops"></a>
 
 
 
@@ -261,60 +261,60 @@ Name | Type | Description
 
 Name | Type | Description 
 -----|------|-------------
-**account**?🔹 | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
-**blockDuration**?🔹 | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
-**customAmiId**?🔹 | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
-**defaultInstanceType**?🔹 | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
-**eipAllocationId**?🔹 | <code>string</code> | Allocation ID for your existing Elastic IP Address.<br/>__*Optional*__
-**instanceInterruptionBehavior**?🔹 | <code>[InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)</code> | The behavior when a Spot Instance is interrupted.<br/>__*Default*__: InstanceInterruptionBehavior.TERMINATE
-**instanceRole**?🔹 | <code>[Role](#aws-cdk-aws-iam-role)</code> | IAM role for the spot instance.<br/>__*Optional*__
-**keyName**?🔹 | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
-**launchTemplate**?🔹 | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | Launch template for the spot fleet.<br/>__*Optional*__
-**physicalName**?🔹 | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
-**region**?🔹 | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
-**targetCapacity**?🔹 | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
-**terminateInstancesWithExpiration**?🔹 | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
-**validFrom**?🔹 | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
-**validUntil**?🔹 | <code>string</code> | the time when the spot fleet allocation expires.<br/>__*Default*__: no expiration
-**vpc**?🔹 | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the spot fleet.<br/>__*Default*__: new VPC will be created
-**vpcSubnet**?🔹 | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | VPC subnet for the spot fleet.<br/>__*Default*__: public subnet
+**account**? | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
+**blockDuration**? | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
+**customAmiId**? | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
+**defaultInstanceType**? | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
+**eipAllocationId**? | <code>string</code> | Allocation ID for your existing Elastic IP Address.<br/>__*Optional*__
+**instanceInterruptionBehavior**? | <code>[InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)</code> | The behavior when a Spot Instance is interrupted.<br/>__*Default*__: InstanceInterruptionBehavior.TERMINATE
+**instanceRole**? | <code>[Role](#aws-cdk-aws-iam-role)</code> | IAM role for the spot instance.<br/>__*Optional*__
+**keyName**? | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
+**launchTemplate**? | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | Launch template for the spot fleet.<br/>__*Optional*__
+**physicalName**? | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
+**region**? | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
+**targetCapacity**? | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
+**terminateInstancesWithExpiration**? | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
+**validFrom**? | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
+**validUntil**? | <code>string</code> | the time when the spot fleet allocation expires.<br/>__*Default*__: no expiration
+**vpc**? | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the spot fleet.<br/>__*Default*__: new VPC will be created
+**vpcSubnet**? | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | VPC subnet for the spot fleet.<br/>__*Default*__: public subnet
 
 
 
-## enum BlockDuration 🔹 <a id="cdk-spot-one-blockduration"></a>
-
-
-
-Name | Description
------|-----
-**ONE_HOUR** 🔹|
-**TWO_HOURS** 🔹|
-**THREE_HOURS** 🔹|
-**FOUR_HOURS** 🔹|
-**FIVE_HOURS** 🔹|
-**SIX_HOURS** 🔹|
-
-
-## enum InstanceInterruptionBehavior 🔹 <a id="cdk-spot-one-instanceinterruptionbehavior"></a>
+## enum BlockDuration  <a id="cdk-spot-one-blockduration"></a>
 
 
 
 Name | Description
 -----|-----
-**HIBERNATE** 🔹|
-**STOP** 🔹|
-**TERMINATE** 🔹|
+**ONE_HOUR** |
+**TWO_HOURS** |
+**THREE_HOURS** |
+**FOUR_HOURS** |
+**FIVE_HOURS** |
+**SIX_HOURS** |
 
 
-## enum NodeType 🔹 <a id="cdk-spot-one-nodetype"></a>
+## enum InstanceInterruptionBehavior  <a id="cdk-spot-one-instanceinterruptionbehavior"></a>
+
+
+
+Name | Description
+-----|-----
+**HIBERNATE** |
+**STOP** |
+**TERMINATE** |
+
+
+## enum NodeType  <a id="cdk-spot-one-nodetype"></a>
 
 Whether the worker nodes should support GPU or just standard instances.
 
 Name | Description
 -----|-----
-**STANDARD** 🔹|Standard instances.
-**GPU** 🔹|GPU instances.
-**INFERENTIA** 🔹|Inferentia instances.
-**ARM** 🔹|ARM instances.
+**STANDARD** |Standard instances.
+**GPU** |GPU instances.
+**INFERENTIA** |Inferentia instances.
+**ARM** |ARM instances.
 
 

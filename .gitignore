@@ -52,6 +52,7 @@ cdk.out
 !/.github/workflows/release.yml
 !/.mergify.yml
 !/.github/dependabot.yml
+!/.github/workflows/projenupgrade.yml
 !/src
 !/.eslintrc.json
 !/tsconfig.jest.json
