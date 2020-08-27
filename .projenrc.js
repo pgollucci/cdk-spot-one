@@ -2,6 +2,8 @@ const {
   ConstructLibraryAws,
 } = require('projen');
 
+const LAST_AWSCDK_VERSION = '1.61.0';
+
 const project = new ConstructLibraryAws({
   "authorName": "Pahud Hsieh",
   "authorEmail": "pahudnet@gmail.com",
@@ -22,7 +24,7 @@ const project = new ConstructLibraryAws({
   // creates PRs for projen upgrades
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
 
-  cdkVersion: '1.60.0',
+  cdkVersion: LAST_AWSCDK_VERSION,
   cdkDependencies: [
     "@aws-cdk/aws-iam",
     "@aws-cdk/aws-ec2",
@@ -31,16 +33,6 @@ const project = new ConstructLibraryAws({
     "@aws-cdk/core",
     "@aws-cdk/custom-resources"
   ],
-  // devDependencies: {
-  //   "aws-sdk": Semver.caret("2.708.0")
-  // },
-
-  // jsii publishing
-  // java: {
-  //   javaPackage: 'com.github.pahud.cdk-spot-one',
-  //   mavenGroupId: 'com.github.pahud',
-  //   mavenArtifactId: 'cdk-spot-one'
-  // },
 
   python: {
     distName: 'cdk-spot-one',
