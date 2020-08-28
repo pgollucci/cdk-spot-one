@@ -10,11 +10,8 @@ const project = new ConstructLibraryAws({
   "name": "cdk-spot-one",
   "description": "One spot instance with EIP and defined duration. No interruption.",
   "repository": "https://github.com/pahud/cdk-spot-one.git",
-  keywords: [
-    "cdk",
-    "spot",
-    "aws"
-  ],
+
+  keywords: ["cdk", "spot", "aws"],
 
   catalog: {
     twitter: 'pahudnet',
@@ -25,6 +22,7 @@ const project = new ConstructLibraryAws({
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
 
   cdkVersion: LAST_AWSCDK_VERSION,
+
   cdkDependencies: [
     "@aws-cdk/aws-iam",
     "@aws-cdk/aws-ec2",
