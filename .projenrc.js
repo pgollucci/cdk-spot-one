@@ -2,7 +2,8 @@ const {
   ConstructLibraryAws,
 } = require('projen');
 
-const LAST_AWSCDK_VERSION = '1.61.1';
+const AWS_CDK_LATEST_RELEASE = '1.61.1';
+const PROJEN_PINNED_VERSION = '0.3.50';
 
 const project = new ConstructLibraryAws({
   "authorName": "Pahud Hsieh",
@@ -21,7 +22,7 @@ const project = new ConstructLibraryAws({
   // creates PRs for projen upgrades
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
 
-  cdkVersion: LAST_AWSCDK_VERSION,
+  cdkVersion: AWS_CDK_LATEST_RELEASE,
 
   cdkDependencies: [
     "@aws-cdk/aws-iam",
@@ -38,16 +39,12 @@ const project = new ConstructLibraryAws({
   }
 });
 
-project.gitignore.exclude(
-  'cdk.context.json',
-  'cdk.out'
-);
+if (PROJEN_PINNED_VERSION) {
+  project.devDependencies.projen = PROJEN_PINNED_VERSION;
+}
 
-project.npmignore.exclude(
-  'cdk.context.json',
-  'cdk.out',
-  'coverage',
-  'yarn-error.log',
-);
+const common_exclude = ['cdk.out', 'cdk.context.json', 'images', 'yarn-error.log'];
+project.npmignore.exclude(...common_exclude);
+project.gitignore.exclude(...common_exclude);
 
 project.synth();
