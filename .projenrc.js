@@ -3,7 +3,6 @@ const {
 } = require('projen');
 
 const AWS_CDK_LATEST_RELEASE = '1.61.1';
-const PROJEN_PINNED_VERSION = '0.3.50';
 
 const project = new ConstructLibraryAws({
   "authorName": "Pahud Hsieh",
@@ -38,10 +37,6 @@ const project = new ConstructLibraryAws({
     module: 'cdk_spot_one'
   }
 });
-
-if (PROJEN_PINNED_VERSION) {
-  project.devDependencies.projen = PROJEN_PINNED_VERSION;
-}
 
 const common_exclude = ['cdk.out', 'cdk.context.json', 'images', 'yarn-error.log'];
 project.npmignore.exclude(...common_exclude);
