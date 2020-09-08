@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.6.30 (2020-09-08)
+
+
+### Features
+
+* support additional user data. ([#34](https://github.com/pahud/cdk-spot-one/issues/34)) ([a10a399](https://github.com/pahud/cdk-spot-one/commit/a10a3995cf746e718168d5b6a3e10f5fe1c27383)), closes [#35](https://github.com/pahud/cdk-spot-one/issues/35)
+
 ### [0.6.29](https://github.com/pahud/cdk-spot-one/compare/v0.6.28...v0.6.29) (2020-09-06)
 
 ### 0.6.28 (2020-09-04)
