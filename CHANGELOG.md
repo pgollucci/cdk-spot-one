@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.6.32 (2020-09-08)
+
+
+### Features
+
+* **spot:** allow creating spot fleets with no block duration ([#39](https://github.com/pahud/cdk-spot-one/issues/39)) ([16d8713](https://github.com/pahud/cdk-spot-one/commit/16d871360eb0f56d783ee7b53970ce7fbd87ea0a)), closes [#38](https://github.com/pahud/cdk-spot-one/issues/38)
+
 ### 0.6.31 (2020-09-08)
 
 ### 0.6.30 (2020-09-08)
