@@ -1,8 +1,8 @@
-import { SpotFleet, InstanceInterruptionBehavior } from '../index';
+import { SpotFleet, InstanceInterruptionBehavior } from '../src';
 import { App, Stack, Duration } from '@aws-cdk/core';
 import * as ec2 from '@aws-cdk/aws-ec2';
 import '@aws-cdk/assert/jest';
-import { BlockDuration } from '../spot';
+import { BlockDuration } from '../src/spot';
 
 describe('Spot Fleet tests', () => {
 
