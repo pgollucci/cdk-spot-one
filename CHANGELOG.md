@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.35](https://github.com/pahud/cdk-spot-one/compare/v0.6.34...v0.6.35) (2020-09-25)
+
+
+### Bug Fixes
+
+* **eip-handler:** add verbose error message ([2995b62](https://github.com/pahud/cdk-spot-one/commit/2995b620a6a49334b1b2e285a99df6f2e99fb195))
+
 ### [0.6.34](https://github.com/pahud/cdk-spot-one/compare/v0.6.33...v0.6.34) (2020-09-09)
 
 ### 0.6.33 (2020-09-08)
