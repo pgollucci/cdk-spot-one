@@ -16,7 +16,7 @@ def on_create(event):
   print("create new resource with props %s" % props)
   physical_id = 'describeInstances-{}'.format(spot_fleet_request_id)
   data = {}
-  while True:
+  for x in range(15):
     result = ec2.describe_spot_fleet_instances(SpotFleetRequestId=spot_fleet_request_id)
     if 'ActiveInstances' in result and len(result['ActiveInstances']) > 0:
       data = {
@@ -28,7 +28,10 @@ def on_create(event):
     else:
       time.sleep(3)
       continue
-  return { 'PhysicalResourceId': physical_id, 'Data': data }
+  if data.get('InstanceId'):
+    return { 'PhysicalResourceId': physical_id, 'Data': data }
+  else:
+    raise Exception("no spot capacity available for this instance type")
 
 def on_update(event):
   return on_create(event)

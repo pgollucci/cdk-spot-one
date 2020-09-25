@@ -31,6 +31,18 @@ Object {
     },
   },
   "Parameters": Object {
+    "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcArtifactHash0BEB5284": Object {
+      "Description": "Artifact hash for asset \\"1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fc\\"",
+      "Type": "String",
+    },
+    "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240": Object {
+      "Description": "S3 bucket for asset \\"1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fc\\"",
+      "Type": "String",
+    },
+    "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C": Object {
+      "Description": "S3 key for asset version \\"1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fc\\"",
+      "Type": "String",
+    },
     "AssetParameters20e06317b2e4aa8c9a1052d2e0f40d4c738bc91399a9ea24aa2b1e013bfe584bArtifactHash6D2CA43C": Object {
       "Description": "Artifact hash for asset \\"20e06317b2e4aa8c9a1052d2e0f40d4c738bc91399a9ea24aa2b1e013bfe584b\\"",
       "Type": "String",
@@ -43,28 +55,16 @@ Object {
       "Description": "S3 key for asset version \\"20e06317b2e4aa8c9a1052d2e0f40d4c738bc91399a9ea24aa2b1e013bfe584b\\"",
       "Type": "String",
     },
-    "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7ArtifactHashCCBBD408": Object {
-      "Description": "Artifact hash for asset \\"3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7\\"",
+    "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26ArtifactHash78B2F3C8": Object {
+      "Description": "Artifact hash for asset \\"b3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26\\"",
       "Type": "String",
     },
-    "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3Bucket8DD93189": Object {
-      "Description": "S3 bucket for asset \\"3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7\\"",
+    "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A": Object {
+      "Description": "S3 bucket for asset \\"b3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26\\"",
       "Type": "String",
     },
-    "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6": Object {
-      "Description": "S3 key for asset version \\"3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7\\"",
-      "Type": "String",
-    },
-    "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aArtifactHash84962CBE": Object {
-      "Description": "Artifact hash for asset \\"7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690a\\"",
-      "Type": "String",
-    },
-    "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33": Object {
-      "Description": "S3 bucket for asset \\"7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690a\\"",
-      "Type": "String",
-    },
-    "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8": Object {
-      "Description": "S3 key for asset version \\"7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690a\\"",
+    "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9": Object {
+      "Description": "S3 key for asset version \\"b3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26\\"",
       "Type": "String",
     },
     "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmarm64gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
@@ -384,7 +384,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3Bucket8DD93189",
+            "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -397,7 +397,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -410,7 +410,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -493,7 +493,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33",
+            "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -506,7 +506,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -519,7 +519,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -656,7 +656,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33",
+            "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -669,7 +669,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -682,7 +682,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -829,7 +829,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33",
+            "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -842,7 +842,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -855,7 +855,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -1093,7 +1093,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3Bucket8DD93189",
+            "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -1106,7 +1106,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -1119,7 +1119,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -1349,7 +1349,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3Bucket8DD93189",
+            "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -1362,7 +1362,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -1375,7 +1375,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -1458,7 +1458,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33",
+            "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -1471,7 +1471,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -1484,7 +1484,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -1621,7 +1621,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33",
+            "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -1634,7 +1634,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -1647,7 +1647,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -1794,7 +1794,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3Bucket24A39C33",
+            "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3Bucket52402240",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -1807,7 +1807,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -1820,7 +1820,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters7b8f901e53744758131669f2606b340cd2b32759fbbfc3dd93fb3fa4d08d690aS3VersionKey0E38F1A8",
+                          "Ref": "AssetParameters1ed82f549c7384dfae04a04440b3d1bf30653fde425e280dbb3ea03dbb3c96fcS3VersionKey772C133C",
                         },
                       ],
                     },
@@ -2058,7 +2058,7 @@ service docker start",
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3Bucket8DD93189",
+            "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -2071,7 +2071,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
@@ -2084,7 +2084,7 @@ service docker start",
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3726f1ae6162951276eac43db8b8b886febcd8114a9803d2a5a8d0e6b216fee7S3VersionKey6BCC72E6",
+                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
                         },
                       ],
                     },
