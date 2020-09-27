@@ -1,14 +1,16 @@
 name: "Set Issue Label and Assignee"
 on:
   pull_request:
-    types: [opened]
+    types:
+      - opened
+      - reopened
 
 jobs:
   label:
     runs-on: ubuntu-latest
     steps:
-      - uses: Naturalclar/issue-action@v2.0.0
+      - uses: Naturalclar/issue-action@f229cda
         with:
           title-or-body: "title"
-          parameters: '[ {"keywords": ["yarn upgrade", "yarn-upgrade"], "labels": ["yarn-upgrade"], "assignees": ["pahud"]}]'
+          parameters: '[ {"keywords": ["yarn", "yarn-upgrade"], "labels": ["yarn-upgrade"], "assignees": ["pahud"]}]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
