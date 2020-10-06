@@ -1,6 +1,6 @@
-import { SpotFleet, InstanceInterruptionBehavior } from '../src';
-import { App, Stack, Duration } from '@aws-cdk/core';
 import * as ec2 from '@aws-cdk/aws-ec2';
+import { App, Stack, Duration } from '@aws-cdk/core';
+import { SpotFleet, InstanceInterruptionBehavior } from '../src';
 import '@aws-cdk/assert/jest';
 import { BlockDuration } from '../src/spot';
 
@@ -55,7 +55,7 @@ describe('Spot Fleet tests', () => {
       ],
     });
   });
-  
+
   test('support additional user data', () => {
     const mockApp = new App();
     const stack = new Stack(mockApp, 'testing-stack');
@@ -69,12 +69,12 @@ describe('Spot Fleet tests', () => {
         subnetType: ec2.SubnetType.PUBLIC,
       },
       terminateInstancesWithExpiration: true,
-      additionalUserData: [ 
+      additionalUserData: [
         'mycommand1',
         'mycommand2 arg1',
       ],
     });
-  
+
     expect(stack).toHaveResourceLike('AWS::EC2::LaunchTemplate', {
       LaunchTemplateData: {
         UserData: {
@@ -97,7 +97,7 @@ describe('Spot Fleet tests', () => {
       },
       terminateInstancesWithExpiration: true,
     });
-  
+
     expect(stack).toHaveResourceLike('AWS::EC2::LaunchTemplate', {
       LaunchTemplateData: {
         InstanceMarketOptions: {
