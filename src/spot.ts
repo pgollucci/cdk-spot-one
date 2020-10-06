@@ -1,16 +1,16 @@
+import * as path from 'path';
 import * as ec2 from '@aws-cdk/aws-ec2';
-import { Construct, Resource, ResourceProps, PhysicalName, Stack, Fn, CfnOutput, Duration, Lazy, CustomResource, Token } from '@aws-cdk/core';
 import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as logs from '@aws-cdk/aws-logs';
+import { Construct, Resource, ResourceProps, PhysicalName, Stack, Fn, CfnOutput, Duration, Lazy, CustomResource, Token } from '@aws-cdk/core';
 import * as cr from '@aws-cdk/custom-resources';
-import * as path from 'path';
 
-const DEFAULT_INSTANCE_TYPE = 't3.large'
+const DEFAULT_INSTANCE_TYPE = 't3.large';
 
 export class VpcProvider extends Stack {
   public static getOrCreate(scope: Construct) {
-    const stack = Stack.of(scope)
+    const stack = Stack.of(scope);
     return stack.node.tryGetContext('use_default_vpc') === '1' ?
       ec2.Vpc.fromLookup(stack, 'Vpc', { isDefault: true }) :
       stack.node.tryGetContext('use_vpc_id') ?
@@ -63,7 +63,7 @@ export enum InstanceInterruptionBehavior {
 }
 
 export interface SpotFleetLaunchTemplateConfig {
-  readonly spotfleet: SpotFleet
+  readonly spotfleet: SpotFleet;
   readonly launchTemplate: ILaunchtemplate;
 }
 
@@ -76,36 +76,36 @@ export class LaunchTemplate implements ILaunchtemplate {
     return {
       spotfleet,
       launchTemplate: this,
-    }
+    };
   }
 }
 
 export interface BaseSpotFleetProps extends ResourceProps {
   /**
    * VPC for the spot fleet
-   * 
+   *
    * @default - new VPC will be created
-   * 
+   *
    */
   readonly vpc?: ec2.IVpc;
 
   /**
    * default EC2 instance type
-   * 
+   *
    * @default - t3.large
    */
   readonly defaultInstanceType?: ec2.InstanceType;
 
   /**
    * reservce the spot instance as spot block with defined duration
-   * 
+   *
    * @default - BlockDuration.ONE_HOUR
    */
   readonly blockDuration?: BlockDuration;
 
   /**
    * The behavior when a Spot Instance is interrupted
-   * 
+   *
    * @default - InstanceInterruptionBehavior.TERMINATE
    */
   readonly instanceInterruptionBehavior?: InstanceInterruptionBehavior;
@@ -117,56 +117,56 @@ export interface BaseSpotFleetProps extends ResourceProps {
 
   /**
    * number of the target capacity
-   * 
+   *
    * @default - 1
    */
   readonly targetCapacity?: number;
 
   /**
    * the time when the spot fleet allocation starts
-   * 
+   *
    * @default - no expiration
    */
   readonly validFrom?: string;
 
   /**
    * the time when the spot fleet allocation expires
-   * 
+   *
    * @default - no expiration
    */
   readonly validUntil?: string;
 
   /**
    * terminate the instance when the allocation is expired
-   * 
+   *
    * @default - true
    */
   readonly terminateInstancesWithExpiration?: boolean;
 
   /**
    * custom AMI ID
-   * 
+   *
    * @default - The latest Amaozn Linux 2 AMI ID
    */
   readonly customAmiId?: string;
 
   /**
    * VPC subnet for the spot fleet
-   * 
+   *
    * @default - public subnet
    */
   readonly vpcSubnet?: ec2.SubnetSelection;
 
   /**
    * SSH key name
-   * 
+   *
    * @default - no ssh key will be assigned
    */
   readonly keyName?: string;
 
   /**
    * Additional commands for user data
-   * 
+   *
    * @default - no additional user data
    */
   readonly additionalUserData?: string[];
@@ -179,8 +179,8 @@ export interface SpotFleetProps extends BaseSpotFleetProps {
   readonly launchTemplate?: ILaunchtemplate;
 
   /**
-   * Allocation ID for your existing Elastic IP Address. 
-   * 
+   * Allocation ID for your existing Elastic IP Address.
+   *
    * @defalt new EIP and its association will be created for the first instance in this spot fleet
    */
   readonly eipAllocationId?: string;
@@ -213,18 +213,18 @@ export class SpotFleet extends Resource {
   /**
    * The default security group of the instance, which only allows TCP 22 SSH ingress rule.
    */
-  public readonly defaultSecurityGroup: ec2.ISecurityGroup; 
+  public readonly defaultSecurityGroup: ec2.ISecurityGroup;
 
   constructor(scope: Construct, id: string, props: SpotFleetProps = {}) {
-    super(scope, id, props)
+    super(scope, id, props);
 
-    this.spotFleetId = id
-    this.launchTemplate = props.launchTemplate ?? new LaunchTemplate()
-    this.targetCapacity = props.targetCapacity ?? 1
-    this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
-    this.validUntil = props.validUntil 
-    this.vpc = props.vpc ?? new ec2.Vpc(this, 'VPC', { maxAzs: 3, natGateways: 1})
-    
+    this.spotFleetId = id;
+    this.launchTemplate = props.launchTemplate ?? new LaunchTemplate();
+    this.targetCapacity = props.targetCapacity ?? 1;
+    this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE);
+    this.validUntil = props.validUntil;
+    this.vpc = props.vpc ?? new ec2.Vpc(this, 'VPC', { maxAzs: 3, natGateways: 1 });
+
     // isntance role
     this.instanceRole = props.instanceRole || new iam.Role(this, 'InstanceRole', {
       roleName: PhysicalName.GENERATE_IF_NEEDED,
@@ -242,33 +242,39 @@ export class SpotFleet extends Resource {
 
     const instanceProfile = new iam.CfnInstanceProfile(this, 'InstanceProfile', {
       roles: [this.instanceRole.roleName],
-    })
+    });
 
     this.defaultSecurityGroup = new ec2.SecurityGroup(this, 'SpotFleetSg', {
       vpc: this.vpc,
-    })
+    });
 
-    this.defaultSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(22))
+    this.defaultSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(22));
 
-    this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
+    this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE);
 
-    const imageId = props.customAmiId ?? 
-      ec2.MachineImage.latestAmazonLinux({ 
+    const imageId = props.customAmiId ??
+      ec2.MachineImage.latestAmazonLinux({
         generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
         cpuType: nodeTypeForInstanceType(this.defaultInstanceType) === NodeType.ARM ? ec2.AmazonLinuxCpuType.ARM_64 : undefined,
-      }).getImage(this).imageId
-
+      }).getImage(this).imageId;
 
     const userData = ec2.UserData.forLinux();
-    userData.addCommands(
-      'yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm',
-      'yum install -y docker',
-      'usermod -aG docker ec2-user',
-      'usermod -aG docker ssm-user',
-      'service docker start',
-    );
-    if (props.additionalUserData)
-      userData.addCommands(...props.additionalUserData);
+
+    /**
+     * If not using custom AMI, we use amazon linux 2 and install the SSM agent and enable docker by default.
+     * Otherwise, we simply do nothing here.
+     */
+    if (props.customAmiId == undefined) {
+      userData.addCommands(
+        'yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm',
+        'yum install -y docker',
+        'usermod -aG docker ec2-user',
+        'usermod -aG docker ssm-user',
+        'service docker start',
+      );
+    }
+
+    if (props.additionalUserData) {userData.addCommands(...props.additionalUserData);}
     const lt = new ec2.CfnLaunchTemplate(this, 'LaunchTemplate', {
       launchTemplateData: {
         imageId,
@@ -298,21 +304,21 @@ export class SpotFleet extends Resource {
           arn: instanceProfile.attrArn,
         },
       },
-    })
+    });
 
     const spotFleetRole = new iam.Role(this, 'FleetRole', {
       assumedBy: new iam.ServicePrincipal('spotfleet.amazonaws.com'),
       managedPolicies: [
         iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AmazonEC2SpotFleetTaggingRole'),
       ],
-    })
+    });
 
     const vpcSubnetSelection = props.vpcSubnet ?? {
       subnetType: ec2.SubnetType.PUBLIC,
-    }
+    };
     const subnetConfig = this.vpc.selectSubnets(vpcSubnetSelection).subnets.map(s => ({
       subnetId: s.subnetId,
-    }))
+    }));
     const cfnSpotFleet = new ec2.CfnSpotFleet(this, id, {
       spotFleetRequestConfigData: {
         launchTemplateConfigs: [
@@ -330,9 +336,9 @@ export class SpotFleet extends Resource {
         validUntil: Lazy.stringValue({ produce: () => this.validUntil }),
         terminateInstancesWithExpiration: props.terminateInstancesWithExpiration ?? true,
       },
-    })
-    new CfnOutput(this, 'SpotFleetId', { value: cfnSpotFleet.ref })
-    const onEvent = new lambda.Function(this, 'OnEvent', { 
+    });
+    new CfnOutput(this, 'SpotFleetId', { value: cfnSpotFleet.ref });
+    const onEvent = new lambda.Function(this, 'OnEvent', {
       code: lambda.Code.fromAsset(path.join(__dirname, '../eip-handler')),
       handler: 'index.on_event',
       runtime: lambda.Runtime.PYTHON_3_8,
@@ -349,40 +355,40 @@ export class SpotFleet extends Resource {
 
     const myProvider = new cr.Provider(this, 'MyProvider', {
       onEventHandler: onEvent,
-      isCompleteHandler: isComplete,        // optional async "waiter"
-      logRetention: logs.RetentionDays.ONE_DAY,   // default is INFINITE
+      isCompleteHandler: isComplete, // optional async "waiter"
+      logRetention: logs.RetentionDays.ONE_DAY, // default is INFINITE
     });
 
     onEvent.addToRolePolicy(new iam.PolicyStatement({
-      actions: [ 'ec2:DescribeSpotFleetInstances' ],
-      resources: [ '*' ],
-    }))
+      actions: ['ec2:DescribeSpotFleetInstances'],
+      resources: ['*'],
+    }));
 
-    const fleetInstances = new CustomResource(this, 'SpotFleetInstances', { 
+    const fleetInstances = new CustomResource(this, 'SpotFleetInstances', {
       serviceToken: myProvider.serviceToken,
       properties: {
         SpotFleetRequestId: cfnSpotFleet.ref,
-      }, 
+      },
     });
 
-    fleetInstances.node.addDependency(cfnSpotFleet)
+    fleetInstances.node.addDependency(cfnSpotFleet);
 
-    this.instanceId = Token.asString(fleetInstances.getAtt('InstanceId'))
-    this.instanceType = Token.asString(fleetInstances.getAtt('InstanceType'))
-    this.spotFleetRequestId = Token.asString(fleetInstances.getAtt('SpotInstanceRequestId'))
+    this.instanceId = Token.asString(fleetInstances.getAtt('InstanceId'));
+    this.instanceType = Token.asString(fleetInstances.getAtt('InstanceType'));
+    this.spotFleetRequestId = Token.asString(fleetInstances.getAtt('SpotInstanceRequestId'));
 
-    new CfnOutput(this, 'InstanceId', { value: this.instanceId })
+    new CfnOutput(this, 'InstanceId', { value: this.instanceId });
 
     // EIP association
     if (props.eipAllocationId) {
       new ec2.CfnEIPAssociation(this, 'EipAssocation', {
         allocationId: props.eipAllocationId,
         instanceId: this.instanceId,
-      })
+      });
     } else {
       new ec2.CfnEIP(this, 'EIP', {
         instanceId: this.instanceId,
-      })
+      });
     }
   }
   public expireAfter(duration: Duration) {

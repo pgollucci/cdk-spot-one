@@ -1,7 +1,7 @@
+import { InstanceType } from '@aws-cdk/aws-ec2';
+import * as cdk from '@aws-cdk/core';
 import { SpotFleet } from './index';
 import { VpcProvider, BlockDuration } from './spot';
-import * as cdk from '@aws-cdk/core';
-import { InstanceType } from '@aws-cdk/aws-ec2';
 
 export class IntegTesting {
   readonly stack: cdk.Stack[];
@@ -20,7 +20,7 @@ export class IntegTesting {
     const vpc = VpcProvider.getOrCreate(stack);
 
     // create the first fleet for one hour and associate with our existing EIP
-    const fleet = new SpotFleet(stack, 'SpotFleet', { vpc })
+    const fleet = new SpotFleet(stack, 'SpotFleet', { vpc });
 
     // configure the expiration after 1 hour
     // fleet.expireAfter(cdk.Duration.hours(1))
@@ -31,24 +31,18 @@ export class IntegTesting {
       eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
       defaultInstanceType: new InstanceType('c6g.large'),
       vpc: fleet.vpc,
-    })
+    });
 
-    Array.isArray(fleet2)
+    Array.isArray(fleet2);
 
     // configure the expiration after 6 hours
     // fleet2.expireAfter(cdk.Duration.hours(6))
 
-    this.stack = [ stack ]
+    this.stack = [stack];
   }
 }
 
 // run the integ testing
 new IntegTesting();
-
-
-
-
-
-
 
 
