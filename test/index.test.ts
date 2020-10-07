@@ -61,6 +61,29 @@ describe('Spot Fleet tests', () => {
     });
   });
 
+  test('feet with custom security group that only allow http', () => {
+    const securityGroup = new ec2.SecurityGroup(stack, 'Custom Security Group', {
+      vpc: new ec2.Vpc(stack, 'VPC'),
+    });
+    securityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
+
+    new SpotFleet(stack, 'SpotFleet', {
+      securityGroup,
+    });
+
+    expect(stack).toHaveResource('AWS::EC2::SecurityGroup', {
+      SecurityGroupIngress: [
+        {
+          CidrIp: '0.0.0.0/0',
+          Description: 'from 0.0.0.0/0:80',
+          FromPort: 80,
+          IpProtocol: 'tcp',
+          ToPort: 80,
+        },
+      ],
+    });
+  });
+
   test('feet with custom instance role', () => {
     const anotherStack = new Stack(mockApp, 'another-stack');
 

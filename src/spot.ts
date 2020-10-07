@@ -158,6 +158,13 @@ export interface BaseSpotFleetProps extends ResourceProps {
   readonly vpcSubnet?: ec2.SubnetSelection;
 
   /**
+   * Security group for the spot fleet
+   *
+   * @default - allows TCP 22 SSH ingress rule
+   */
+  readonly securityGroup?: ec2.SecurityGroup;
+
+  /**
    * SSH key name
    *
    * @default - no ssh key will be assigned
@@ -224,6 +231,7 @@ export class SpotFleet extends Resource {
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE);
     this.validUntil = props.validUntil;
     this.vpc = props.vpc ?? new ec2.Vpc(this, 'VPC', { maxAzs: 3, natGateways: 1 });
+    this.defaultSecurityGroup = props.securityGroup || this.createSecurityGroup();
 
     this.instanceRole = props.instanceRole || this.createInstanceRole();
     this.instanceRole.addManagedPolicy({
@@ -233,12 +241,6 @@ export class SpotFleet extends Resource {
     const instanceProfile = new iam.CfnInstanceProfile(this, 'InstanceProfile', {
       roles: [this.instanceRole.roleName],
     });
-
-    this.defaultSecurityGroup = new ec2.SecurityGroup(this, 'SpotFleetSg', {
-      vpc: this.vpc,
-    });
-
-    this.defaultSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(22));
 
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE);
 
@@ -392,6 +394,14 @@ export class SpotFleet extends Resource {
       roleName: PhysicalName.GENERATE_IF_NEEDED,
       assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
     });
+  }
+
+  private createSecurityGroup(): ec2.SecurityGroup {
+    const securityGroup = new ec2.SecurityGroup(this, 'SpotFleetSg', {
+      vpc: this.vpc,
+    });
+    securityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(22));
+    return securityGroup;
   }
 }
 
