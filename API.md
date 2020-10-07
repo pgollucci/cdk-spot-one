@@ -161,7 +161,7 @@ Creates a new stack.
 new VpcProvider(scope?: Construct, id?: string, props?: StackProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  Parent of this stack, usually an `App` or a `Stage`, but could be any construct.
+* **scope** (<code>[Construct](#constructs-construct)</code>)  Parent of this stack, usually an `App` or a `Stage`, but could be any construct.
 * **id** (<code>string</code>)  The construct ID of this stack.
 * **props** (<code>[StackProps](#aws-cdk-core-stackprops)</code>)  Stack properties.
   * **analyticsReporting** (<code>boolean</code>)  Include runtime versioning information in this Stack. __*Default*__: `analyticsReporting` setting of containing `App`, or value of 'aws:cdk:version-reporting' context key
