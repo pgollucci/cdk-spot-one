@@ -22,7 +22,7 @@ const project = new AwsCdkConstructLibrary({
     announce: false,
   },
   dependabot: false,
-  projenUpgradeSchedule: ['0 6 * * 0'],
+  projenUpgradeSchedule: ['0 0 * * 0'],
   // creates PRs for projen upgrades
   projenUpgradeSecret: AUTOMATION_TOKEN,
   cdkVersion: AWS_CDK_LATEST_RELEASE,
