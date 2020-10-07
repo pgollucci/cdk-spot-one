@@ -99,6 +99,7 @@ new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
   * **instanceInterruptionBehavior** (<code>[InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)</code>)  The behavior when a Spot Instance is interrupted. __*Default*__: InstanceInterruptionBehavior.TERMINATE
   * **instanceRole** (<code>[Role](#aws-cdk-aws-iam-role)</code>)  IAM role for the spot instance. __*Optional*__
   * **keyName** (<code>string</code>)  SSH key name. __*Default*__: no ssh key will be assigned
+  * **securityGroup** (<code>[SecurityGroup](#aws-cdk-aws-ec2-securitygroup)</code>)  Security group for the spot fleet. __*Default*__: allows TCP 22 SSH ingress rule
   * **targetCapacity** (<code>number</code>)  number of the target capacity. __*Default*__: 1
   * **terminateInstancesWithExpiration** (<code>boolean</code>)  terminate the instance when the allocation is expired. __*Default*__: true
   * **validFrom** (<code>string</code>)  the time when the spot fleet allocation starts. __*Default*__: no expiration
@@ -209,6 +210,7 @@ Name | Type | Description
 **keyName**? | <code>string</code> | SSH key name.<br/>__*Default*__: no ssh key will be assigned
 **physicalName**? | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
 **region**? | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
+**securityGroup**? | <code>[SecurityGroup](#aws-cdk-aws-ec2-securitygroup)</code> | Security group for the spot fleet.<br/>__*Default*__: allows TCP 22 SSH ingress rule
 **targetCapacity**? | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
 **terminateInstancesWithExpiration**? | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
 **validFrom**? | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
@@ -277,6 +279,7 @@ Name | Type | Description
 **launchTemplate**? | <code>[ILaunchtemplate](#cdk-spot-one-ilaunchtemplate)</code> | Launch template for the spot fleet.<br/>__*Optional*__
 **physicalName**? | <code>string</code> | The value passed in by users to the physical name prop of the resource.<br/>__*Default*__: The physical name will be allocated by CloudFormation at deployment time
 **region**? | <code>string</code> | The AWS region this resource belongs to.<br/>__*Default*__: the resource is in the same region as the stack it belongs to
+**securityGroup**? | <code>[SecurityGroup](#aws-cdk-aws-ec2-securitygroup)</code> | Security group for the spot fleet.<br/>__*Default*__: allows TCP 22 SSH ingress rule
 **targetCapacity**? | <code>number</code> | number of the target capacity.<br/>__*Default*__: 1
 **terminateInstancesWithExpiration**? | <code>boolean</code> | terminate the instance when the allocation is expired.<br/>__*Default*__: true
 **validFrom**? | <code>string</code> | the time when the spot fleet allocation starts.<br/>__*Default*__: no expiration
