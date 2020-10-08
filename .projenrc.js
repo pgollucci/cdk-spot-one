@@ -59,6 +59,15 @@ workflow.addJobs({
       // ...project.workflowBootstrapSteps,
       // yarn upgrade
       {
+        uses: 'actions/checkout@v2',
+      },
+      {
+        uses: 'actions/setup-node@v1',
+        with: {
+          'node-version': '10.17.0',
+        },
+      },
+      {
         run: `yarn upgrade`
       },
       {
