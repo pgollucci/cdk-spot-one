@@ -53,10 +53,9 @@ yarn-error.log
 !/.github/workflows/build.yml
 !/.github/workflows/release.yml
 !/.mergify.yml
-!/.github/workflows/projenupgrade.yml
 !/src
 !/tsconfig.jest.json
 !/test
 !/.eslintrc.json
 !/API.md
-!/.github/workflows/yarnupgrade.yml
+!/.github/workflows/projenyarnupgrade.yml

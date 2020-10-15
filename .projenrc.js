@@ -22,9 +22,6 @@ const project = new AwsCdkConstructLibrary({
     announce: false,
   },
   dependabot: false,
-  projenUpgradeSchedule: ['0 0 * * 0'],
-  // creates PRs for projen upgrades
-  projenUpgradeSecret: AUTOMATION_TOKEN,
   cdkVersion: AWS_CDK_LATEST_RELEASE,
   cdkDependencies: [
     "@aws-cdk/aws-iam",
@@ -41,14 +38,13 @@ const project = new AwsCdkConstructLibrary({
   }
 });
 
-
 // create a custom projen and yarn upgrade workflow
-const workflow = new GithubWorkflow(project, 'YarnUpgrade');
+const workflow = new GithubWorkflow(project, 'ProjenYarnUpgrade');
 
 workflow.on({
   schedule: [{
-    cron: '0 0 * * *'
-  }], // 0am every day
+    cron: '0 6 * * *'
+  }], // 6am every day
   workflow_dispatch: {}, // allow manual triggering
 });
 
@@ -56,33 +52,28 @@ workflow.addJobs({
   upgrade: {
     'runs-on': 'ubuntu-latest',
     'steps': [
-      // ...project.workflowBootstrapSteps,
+      ...project.workflowBootstrapSteps,
+
       // yarn upgrade
-      {
-        uses: 'actions/checkout@v2',
-      },
-      {
-        uses: 'actions/setup-node@v1',
-        with: {
-          'node-version': '10.17.0',
-        },
-      },
       {
         run: `yarn upgrade`
       },
+
+      // upgrade projen
       {
-        run: `git restore package.json`
+        run: `yarn projen:upgrade`
       },
+
       // submit a PR
       {
         name: 'Create Pull Request',
         uses: 'peter-evans/create-pull-request@v3',
         with: {
           'token': '${{ secrets.' + AUTOMATION_TOKEN + '}}',
-          'commit-message': 'chore: yarn upgrade',
-          'branch': 'auto/yarn-upgrade',
-          'title': 'chore: yarn upgrade',
-          'body': 'This PR executes yarn upgrade to the latest version',
+          'commit-message': 'chore: upgrade projen',
+          'branch': 'auto/projen-upgrade',
+          'title': 'chore: upgrade projen and yarn',
+          'body': 'This PR upgrades projen and yarn upgrade to the latest version',
         }
       },
     ],
