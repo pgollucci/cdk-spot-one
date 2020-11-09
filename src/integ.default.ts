@@ -15,7 +15,7 @@ export class IntegTesting {
       account: process.env.CDK_DEFAULT_ACCOUNT,
     };
 
-    const stack = new cdk.Stack(app, 'SpotFleetStack', { env });
+    const stack = new cdk.Stack(app, 'SpotFleetStack3', { env });
 
     const vpc = VpcProvider.getOrCreate(stack);
 

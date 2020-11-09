@@ -442,7 +442,7 @@ Object {
               "Tags": Array [
                 Object {
                   "Key": "Name",
-                  "Value": "SpotFleetStack/spotFleet/SpotFleet2",
+                  "Value": "SpotFleetStack3/spotFleet/SpotFleet2",
                 },
               ],
             },
@@ -503,7 +503,7 @@ service docker start",
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (SpotFleetStack/SpotFleet2/MyProvider)",
+        "Description": "AWS CDK resource provider framework - isComplete (SpotFleetStack3/SpotFleet2/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -666,7 +666,7 @@ service docker start",
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (SpotFleetStack/SpotFleet2/MyProvider)",
+        "Description": "AWS CDK resource provider framework - onEvent (SpotFleetStack3/SpotFleet2/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -839,7 +839,7 @@ service docker start",
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (SpotFleetStack/SpotFleet2/MyProvider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (SpotFleetStack3/SpotFleet2/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1188,7 +1188,7 @@ service docker start",
     },
     "SpotFleet2SpotFleetSg14287DB9": Object {
       "Properties": Object {
-        "GroupDescription": "SpotFleetStack/SpotFleet2/SpotFleetSg",
+        "GroupDescription": "SpotFleetStack3/SpotFleet2/SpotFleetSg",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -1385,7 +1385,7 @@ service docker start",
               "Tags": Array [
                 Object {
                   "Key": "Name",
-                  "Value": "SpotFleetStack/spotFleet/SpotFleet",
+                  "Value": "SpotFleetStack3/spotFleet/SpotFleet",
                 },
               ],
             },
@@ -1446,7 +1446,7 @@ service docker start",
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (SpotFleetStack/SpotFleet/MyProvider)",
+        "Description": "AWS CDK resource provider framework - isComplete (SpotFleetStack3/SpotFleet/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1609,7 +1609,7 @@ service docker start",
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (SpotFleetStack/SpotFleet/MyProvider)",
+        "Description": "AWS CDK resource provider framework - onEvent (SpotFleetStack3/SpotFleet/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1782,7 +1782,7 @@ service docker start",
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (SpotFleetStack/SpotFleet/MyProvider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (SpotFleetStack3/SpotFleet/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -2131,7 +2131,7 @@ service docker start",
     },
     "SpotFleetSpotFleetSg441E7FD6": Object {
       "Properties": Object {
-        "GroupDescription": "SpotFleetStack/SpotFleet/SpotFleetSg",
+        "GroupDescription": "SpotFleetStack3/SpotFleet/SpotFleetSg",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -2163,7 +2163,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc",
+            "Value": "SpotFleetStack3/Vpc",
           },
         ],
       },
@@ -2174,7 +2174,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc",
+            "Value": "SpotFleetStack3/Vpc",
           },
         ],
       },
@@ -2208,7 +2208,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet1",
+            "Value": "SpotFleetStack3/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -2240,7 +2240,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet1",
+            "Value": "SpotFleetStack3/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -2266,7 +2266,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet2",
+            "Value": "SpotFleetStack3/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -2309,7 +2309,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet2",
+            "Value": "SpotFleetStack3/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -2339,7 +2339,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotFleetStack3/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -2359,7 +2359,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotFleetStack3/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -2370,7 +2370,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotFleetStack3/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -2413,7 +2413,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotFleetStack3/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -2442,7 +2442,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet2",
+            "Value": "SpotFleetStack3/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -2485,7 +2485,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet2",
+            "Value": "SpotFleetStack3/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {

@@ -1,7 +1,11 @@
 #!/bin/bash
 
+if [[ $# -lt 1 ]]; then
+  echo "Usage: ec2-connect INSTANCE-ID [PUBLIC_KEY_PATH]"
+  exit 1
+fi
 instanceId=$1
-pubkey=$2
+pubkey=${2-$HOME/.ssh/id_rsa.pub}
 sshUser='ec2-user'
 
 az=$(aws ec2 describe-instances --instance-id ${instanceId} --query 'Reservations[0].Instances[0].Placement.AvailabilityZone' --output text)
