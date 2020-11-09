@@ -15,7 +15,7 @@ export class IntegTesting {
       account: process.env.CDK_DEFAULT_ACCOUNT,
     };
 
-    const stack = new cdk.Stack(app, 'SpotFleetStack5', { env });
+    const stack = new cdk.Stack(app, 'SpotFleetStack', { env });
 
     const vpc = VpcProvider.getOrCreate(stack);
 
@@ -29,7 +29,7 @@ export class IntegTesting {
     const fleet2 = new SpotFleet(stack, 'SpotFleet2', {
       blockDuration: BlockDuration.SIX_HOURS,
       eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
-      defaultInstanceType: new InstanceType('c6g.large'),
+      defaultInstanceType: new InstanceType('t3.large'),
       vpc: fleet.vpc,
     });
 
