@@ -69,7 +69,7 @@ defaultInstanceType: new InstanceType('c6g.large')
 
 # SSH connect
 
-By default the `cdk-spot-one` does not assign any SSH public key for you on the instance. You are encouraged to use `ec2-instance-connect` to send your public key from local followed by one-time SSH connect.
+By default the `cdk-spot-one` does not bind any SSH public key for you on the instance. You are encouraged to use `ec2-instance-connect` to send your public key from local followed by one-time SSH connect.
 
 For example:
 
@@ -79,34 +79,17 @@ echo "sending public key to ${instanceId}"
 aws ec2-instance-connect send-ssh-public-key --instance-id ${instanceId} --instance-os-user ec2-user \
 --ssh-public-key file://${pubkey} --availability-zone ${az} 
 ```
+## npx ec2-connect INSTANCE_ID
 
-You may also create a simple `ec2-connect.sh` script like this and save in your $PATH:
-
-```sh
-#!/bin/bash
-
-instanceId=$1
-pubkey="$HOME/.ssh/aws_2020_id_rsa.pub"
-sshUser='ec2-user'
-
-az=$(aws ec2 describe-instances --instance-id ${instanceId} --query 'Reservations[0].Instances[0].Placement.AvailabilityZone' --output text)
-publicIp=$(aws ec2 describe-instances --instance-id ${instanceId} --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
-
-
-echo "sending public key to ${instanceId}"
-aws ec2-instance-connect send-ssh-public-key --instance-id ${instanceId} --instance-os-user ${sshUser} \
---ssh-public-key file://${pubkey} --availability-zone ${az} > /dev/null
-
-if [[ $2 != '--send-key-only' ]]; then
-  echo "connecting to ${publicIp} at ${az}"
-	ssh ${sshUser}@${publicIp}
-fi
-```
-
-And simply run this to connect to the EC2 instance.
+To connect to the instance, run `npx ec2-connect` as below:
 
 ```sh
-$ ec2-connect.sh i-01f827ab9de7b93a9
+$ npx ec2-connect i-01f827ab9de7b93a9
 ```
 
-It's also possible to explicitly specify your existing SSH key with the `keyName` construct property if you like.
+or 
+
+```sh
+$ npx ec2-connect i-01f827ab9de7b93a9 ~/.ssh/other_public_key_path
+```
+If you are using different SSH public key(default is ~/.ssh/id_rsa.pub)
