@@ -15,7 +15,8 @@ export class IntegTesting {
       account: process.env.CDK_DEFAULT_ACCOUNT,
     };
 
-    const stack = new cdk.Stack(app, 'SpotFleetStack', { env });
+    const stackName = app.node.tryGetContext('stackName') || 'SpotFleetStack';
+    const stack = new cdk.Stack(app, stackName, { env });
 
     const instanceType = stack.node.tryGetContext('instance_type') || 't3.large';
     const eipAllocationId = stack.node.tryGetContext('eip_allocation_id');
