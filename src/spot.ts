@@ -239,11 +239,11 @@ export class SpotFleet extends Resource {
     this.validUntil = props.validUntil;
     this.vpc = props.vpc ?? new ec2.Vpc(this, 'VPC', { maxAzs: 3, natGateways: 1 });
     this.defaultSecurityGroup = props.securityGroup || this.createSecurityGroup();
-
     this.instanceRole = props.instanceRole || this.createInstanceRole();
     this.instanceRole.addManagedPolicy({
       managedPolicyArn: 'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
     });
+    const stack = Stack.of(this);
 
     const instanceProfile = new iam.CfnInstanceProfile(this, 'InstanceProfile', {
       roles: [this.instanceRole.roleName],
@@ -337,7 +337,7 @@ export class SpotFleet extends Resource {
         terminateInstancesWithExpiration: props.terminateInstancesWithExpiration ?? true,
       },
     });
-    new CfnOutput(this, 'SpotFleetId', { value: cfnSpotFleet.ref });
+    new CfnOutput(stack, 'SpotFleetId', { value: cfnSpotFleet.ref });
     const onEvent = new lambda.Function(this, 'OnEvent', {
       code: lambda.Code.fromAsset(path.join(__dirname, '../eip-handler')),
       handler: 'index.on_event',
@@ -377,7 +377,7 @@ export class SpotFleet extends Resource {
     this.instanceType = Token.asString(fleetInstances.getAtt('InstanceType'));
     this.spotFleetRequestId = Token.asString(fleetInstances.getAtt('SpotInstanceRequestId'));
 
-    new CfnOutput(this, 'InstanceId', { value: this.instanceId });
+    new CfnOutput(stack, 'InstanceId', { value: this.instanceId });
 
     // EIP association
     if (props.eipAllocationId) {
