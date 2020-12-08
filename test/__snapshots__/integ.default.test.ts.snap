@@ -409,6 +409,14 @@ Object {
     "SpotFleet2LaunchTemplate0914AD56": Object {
       "Properties": Object {
         "LaunchTemplateData": Object {
+          "BlockDeviceMappings": Array [
+            Object {
+              "DeviceName": "/dev/xvda",
+              "Ebs": Object {
+                "VolumeSize": 60,
+              },
+            },
+          ],
           "IamInstanceProfile": Object {
             "Arn": Object {
               "Fn::GetAtt": Array [

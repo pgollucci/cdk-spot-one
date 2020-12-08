@@ -31,6 +31,14 @@ export class IntegTesting {
       eipAllocationId: 'eipalloc-0d1bc6d85895a5410',
       defaultInstanceType: new InstanceType('t3.large'),
       vpc: fleet.vpc,
+      blockDeviceMappings: [
+        {
+          deviceName: '/dev/xvda',
+          ebs: {
+            volumeSize: 60,
+          },
+        },
+      ],
     });
 
     Array.isArray(fleet2);
