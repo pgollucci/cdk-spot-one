@@ -1,6 +1,5 @@
 const {
   AwsCdkConstructLibrary,
-  GithubWorkflow,
 } = require('projen');
 
 const AWS_CDK_LATEST_RELEASE = '1.62.0';
@@ -9,12 +8,12 @@ const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No
 const AUTOMATION_TOKEN = 'AUTOMATION_GITHUB_TOKEN';
 
 const project = new AwsCdkConstructLibrary({
-  "authorName": "Pahud Hsieh",
-  "authorEmail": "pahudnet@gmail.com",
-  "name": PROJECT_NAME,
-  "description": PROJECT_DESCRIPTION,
-  "repository": "https://github.com/pahud/cdk-spot-one.git",
-  keywords: ["cdk", "spot", "aws"],
+  authorName: 'Pahud Hsieh',
+  authorEmail: 'pahudnet@gmail.com',
+  name: PROJECT_NAME,
+  description: PROJECT_DESCRIPTION,
+  repository: 'https://github.com/pahud/cdk-spot-one.git',
+  keywords: ['cdk', 'spot', 'aws'],
   catalog: {
     twitter: 'pahudnet',
     announce: false,
@@ -22,26 +21,26 @@ const project = new AwsCdkConstructLibrary({
   dependabot: false,
   cdkVersion: AWS_CDK_LATEST_RELEASE,
   cdkDependencies: [
-    "@aws-cdk/aws-iam",
-    "@aws-cdk/aws-ec2",
-    "@aws-cdk/aws-lambda",
-    "@aws-cdk/aws-logs",
-    "@aws-cdk/core",
-    "@aws-cdk/custom-resources"
+    '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-ec2',
+    '@aws-cdk/aws-lambda',
+    '@aws-cdk/aws-logs',
+    '@aws-cdk/core',
+    '@aws-cdk/custom-resources',
   ],
 
   python: {
     distName: 'cdk-spot-one',
-    module: 'cdk_spot_one'
-  }
+    module: 'cdk_spot_one',
+  },
 });
 
 // create a custom projen and yarn upgrade workflow
-const workflow = new GithubWorkflow(project, 'ProjenYarnUpgrade');
+workflow = project.github.addWorkflow('ProjenYarnUpgrade');
 
 workflow.on({
   schedule: [{
-    cron: '11 0 * * *'
+    cron: '11 0 * * *',
   }], // 0:11am every day
   workflow_dispatch: {}, // allow manual triggering
 });
@@ -51,14 +50,14 @@ workflow.addJobs({
     'runs-on': 'ubuntu-latest',
     'steps': [
       { uses: 'actions/checkout@v2' },
-      { 
+      {
         uses: 'actions/setup-node@v1',
         with: {
           'node-version': '10.17.0',
-        }
+        },
       },
-      { run: `yarn upgrade` },
-      { run: `yarn projen:upgrade` },
+      { run: 'yarn upgrade' },
+      { run: 'yarn projen:upgrade' },
       // submit a PR
       {
         name: 'Create Pull Request',
@@ -70,7 +69,7 @@ workflow.addJobs({
           'title': 'chore: upgrade projen and yarn',
           'body': 'This PR upgrades projen and yarn upgrade to the latest version',
           'labels': 'auto-merge',
-        }
+        },
       },
     ],
   },

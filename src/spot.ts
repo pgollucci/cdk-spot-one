@@ -177,6 +177,13 @@ export interface BaseSpotFleetProps extends ResourceProps {
    * @default - no additional user data
    */
   readonly additionalUserData?: string[];
+
+  /**
+   * blockDeviceMappings for config instance.
+   *
+   * @default - from ami config.
+   */
+  readonly blockDeviceMappings?: ec2.CfnLaunchTemplate.BlockDeviceMappingProperty[] | undefined;
 }
 
 export interface SpotFleetProps extends BaseSpotFleetProps {
@@ -284,6 +291,7 @@ export class SpotFleet extends Resource {
             ],
           },
         ],
+        blockDeviceMappings: props.blockDeviceMappings ?? undefined,
         instanceMarketOptions: {
           marketType: 'spot',
           spotOptions: {
