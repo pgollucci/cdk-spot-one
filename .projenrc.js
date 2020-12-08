@@ -2,7 +2,6 @@ const {
   AwsCdkConstructLibrary,
 } = require('projen');
 
-const AWS_CDK_LATEST_RELEASE = '1.62.0';
 const PROJECT_NAME = 'cdk-spot-one';
 const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No interruption.';
 const AUTOMATION_TOKEN = 'AUTOMATION_GITHUB_TOKEN';
@@ -19,7 +18,7 @@ const project = new AwsCdkConstructLibrary({
     announce: false,
   },
   dependabot: false,
-  cdkVersion: AWS_CDK_LATEST_RELEASE,
+  cdkVersion: '1.77.0',
   cdkDependencies: [
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-ec2',
