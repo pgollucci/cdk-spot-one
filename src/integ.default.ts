@@ -23,7 +23,7 @@ export class IntegTesting {
 
     const vpc = VpcProvider.getOrCreate(stack);
 
-    const fleet = new SpotFleet(stack, 'SpotFleet', { 
+    const fleet = new SpotFleet(stack, 'SpotFleet', {
       vpc,
       blockDuration: BlockDuration.SIX_HOURS,
       eipAllocationId: eipAllocationId,
@@ -38,9 +38,9 @@ export class IntegTesting {
       ],
     });
 
-    const expireAfter = stack.node.tryGetContext('expire_after')
-    if (expireAfter){
-      fleet.expireAfter(cdk.Duration.hours(expireAfter))
+    const expireAfter = stack.node.tryGetContext('expire_after');
+    if (expireAfter) {
+      fleet.expireAfter(cdk.Duration.hours(expireAfter));
     }
 
     this.stack = [stack];
